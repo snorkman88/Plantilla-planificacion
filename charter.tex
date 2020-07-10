@@ -1,7 +1,8 @@
+% !TeX spellcheck = <none>
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Sistema de monitoreo de redes de distribución de baja tensión utilizando sensores autónomos y LoRaWAN} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -11,18 +12,18 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Milton Eduardo Sosa} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\director{Ing. Marcelo E. Romeo}
+\pertenenciaDirector{Universidad Nacional de San Martín} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Ing. Milton Eduardo Sosa}
+\empresaCliente{}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -32,9 +33,9 @@
 \juradoTres{Nombre y Apellido (3)}
 \pertenenciaJurTres{pertenencia (3)}
  
-\fechaINICIO{22 de junio de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlanificacion{22 de Agosto de 2020} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{22 de diciembre de 2020}		%Fecha de defensa pública del trabajo final
+\fechaINICIO{27 de junio de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlanificacion{22 de Julio de 2021} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{30 de Julio de 2020}		%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -64,11 +65,8 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                                          & 22/06/2020 \\ \hline
-1.1      & Ejemplo de un texto muy largo que debiera ocupar más de una línea para que tengan de ejemplo                                                                                																						   & dd/mm/aaaa \\ \hline
-1.2      & Otro ejemplo \newline
-		   Con texto partido \newline
-		   En varias líneas \newline
-		   A propósito                                                                     & dd/mm/aaaa \\ \hline
+1.1      & Avances hasta el desglose de trabajo en tareas.                                                                         																						   & 10/07/2020 \\ \hline
+
 \end{tabularx}
 \end{table}
 
@@ -85,7 +83,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un\textcolor{red}{... completar con una descripción de una o dos líneas}, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema embebido de tipo autónomo que sea capaz de manera no invasiva de determinar valores eficaces de corriente alterna en sistemas metropolitanos de distribución de energía eléctrica en baja tensión y reportar estados a un centro de operaciones a través de una red LoRaWAN. Tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \$60.000, sesenta mil pesos argentinos, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -105,181 +103,162 @@ Se adjunta a esta acta la planificación inicial.
 
 
 
-\section{Descripción técnica-conceptual del Proyecto a realizar}
+\section{Descripción técnica-conceptual del Proyecto}
 \label{sec:descripcion}
 
-\begin{consigna}{red}
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+\begin{consigna}{black}
+El presente trabajo surge como idea del autor en base a la necesidad de permitir a las redes distribución metropolitanas y megalopolitanas de integrar características de Ciudades Inteligentes y así permitir enmarcarlas dentro del concepto de Internet de las cosas (IoT). El mismo sigue las premisas de minimizar impactos y costos de implementación en las redes de distribución actual y a la vez procura lograr un aumento en la calidad de servicio de distribución de energía eléctrica haciendo uso de los datos relevados.\\
+Es menester mencionar que este trabajo es parte de un proyecto de PyME de base tecnológica con el objeto de comercializar servicios a diferentes prestadoras del servicio de distribución de energía electrica en Sudamérica, como así también a personas que deseen monitorear el estado de una carga eléctrica en particular haciendo uso de una estructura de red de comunicación de largo alcance.\\
+Dado el costo monetario y operativo que actualmente representa reemplazar actores clave en un sistema de distribución de energía eléctrica, como son los transformadores de media a baja tensión o bien los fusibles aéreos inmediatamente a la salida de los transformadores ya operativos en una red de distribución de energía eléctrica sin otra prestación técnica mas que bajar el nivel de tensión o proteger las líneas de una sobrecarga de corriente, surge la necesidad de proponer alternativas tecnologicas para aumentar la calidad del servicio de distribución de energía eléctrica.\\
+El siguiente sistema ocuparía un mínimo espacio físico adicional en la red, pero de gran relevancia para realizar un relevamiento en tiempo semi real del estado de operación de la red de distribución de energía eléctrica.\\
+Entre las características técnicas que sobresalen de este sistema, se encuentran la utilización tecnologías de redes de comunicación públicas de largo alcance y bajo consumo para reportar el estado de operación de un nodo en particular de la red. Tambien propone el uso de formas de conversión y acumulación de energía eléctrica de bajo impacto medioambiental con el objeto de lograr autonomía de operación aún en condiciones meteorológicas desfavorables y operando en régimen 24/7. Finalmente es la intención de que este prototipo se mantenga agnóstico a la frecuencia de operación de la red como así tambien a la tensión otorgando así, facilidad a la hora de realizar el comisionamiento en diferentes redes.\\
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
 
-\begin{itemize}
-\item ¿Cómo se vincula este proyecto con la misión de la organización?
-\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-\item ¿Cuales son las necesidades que debe satisfacer?
-\item ¿Por dónde pasa la innovación?
-\end{itemize}
+\section{Diagrama de bloques del proyecto}
+El sistema propuesto se compondrá por un Hardware (HW) a desarrollar para cada nodo y los servicios interconectados en la nube también llamados Backend services (BES).\\
+\subsection{Hardware a desarrollar}
+\label{sec:diagrama_de_bloques_HW}
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
-
+El diagrama de bloques del HW a desarrollar es presentado en la Figura \ref{fig:diagBloques}. Este posee cinco etapas:
 \vspace{25px}
 
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
+\begin{figure}[H]
+	\centering 
+	\includegraphics[width=.7\textwidth]{./Figuras/HW_block_diagram.png}
+	\caption{Diagrama en bloques del hardware asociado al sistema.}
+	\label{fig:diagBloques}
 \end{figure}
 
-\vspace{25px}
+\vspace{15px}
+\begin{itemize}
+	\item Transformador de Corriente (TI): encargado de suplir de corriente eléctrica para la carga del acumulador, como así también actuar como  transductor de corriente para la medición del valor eficaz de la misma.\\
 
-El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
+	\item Etapa de conversión y acumulación de energía: compuesta por un rectificador de baja caída, un acumulador y un conversor DC/DC.\\
+
+	\item Etapa de medición / detección de corriente: encargado de las mediciones de valor eficaz de corriente alterna junto a un circuito de acondicionamiento de señal.\\
+
+	\item Circuito de selección de modo: compuesto por un relay (RL) acorde al TI y su circuito de excitación.\\
+
+	\item Etapa de procesamiento, control y comunicaciones: compuesto por un microcontrolador (uC) y un módulo de comunicaciones (MC) LoRa.\\
+\end{itemize}
+
+\subsection{Servicios de Backend a desarrollar}
+Para lograr la recuperación de datos generados por el HW y enviados a la red LoRaWAN, es necesario contar con un conjunto de servicios privados de backend (BES). Estos deberán estar integrados de manera permanente con la red LoRaWAN la cual se considera ya existente cuya infraestructura es presentada en la Figura \ref{fig:diagBloquesLoRaWAN}.\\
+
+\begin{figure}[H]
+	\centering 
+	\includegraphics[width=.7\textwidth]{./Figuras/arquitectura_TTN.png}
+	\caption{Diagrama en bloques de la red LoRaWAN a utilizar y sus posibles integraciones con terceras partes.}
+	\label{fig:diagBloquesLoRaWAN}
+\end{figure}
+
+Esta integración se logrará a través de APIs HTTP o mediante suscripciones a tópicos de broker de mensajería.\\
+Los BES privados a desarrollar en este proyecto serán 3:
+\begin{enumerate}
+	\item Servicio de Recuperación de Datos: encargado de recuperar los datos enviados por los nodos a traves de la API proporcionada por TTN y almacenarlos en una base de datos.
+	\item Base de Datos (DB): encargado de almacenar los valores históricos de los nodos sensores y generar diferentes métricas para los reportes de estado para luego desplegarlas en una interfaz gráfica de usuario.
+	\item Interfaz Gráfica de Usuario (GUI): encargada de presentar los últimos datos recuperados por cada nodo de manera amigable para el usuario final del sistema.
+\end{enumerate}
+
 \end{consigna}
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
+\begin{consigna}{black} 
 
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
-
-\begin{table}[ht]
+\begin{table}[H]
 %\caption{Identificación de los interesados}
 %\label{tab:interesados}
 \begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
-Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
+Auspiciante, Impulsor\\Responsable y Equipo  	    & Ing. Milton E. Sosa & Universidad Nacional de Misiones &Egresado   	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Colaboradores & Dr. Ing. Eduardo O. Sosa                  &Universidad Nacional de Misiones             	&Docente Investigador    	\\ \hline
+
 \end{tabularx}
 \end{table}
-
-El Director suele ser uno de los Orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Sería deseable listar a continuación de la tabla las principales características de cada interesado.
  
-Por ejemplo:
 \begin{itemize}
-\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
+\item Ing. Marcelo E. Romeo, de vasta experiencia profesional en el ámbito de la microelectrónica e investigación y desarrollo para diferentes entidades y universidades nacionales.
+\item Dr. Ing. Eduardo O. Sosa, cuenta con más de 20 años de experiencia en el área de las TELCO, ex miembro colaborador de la RIU, profesor titular de la cátedra de Física en la Universidad Nacional de Misiones y lidera proyectos bilaterales entre Argentina y Alemania en el ámbito de IoT.
 \end{itemize}
 
 \end{consigna}
-
 
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
+\begin{consigna}{black}
+El propósito de este proyecto es el de desarrollar un sistema formado por un circuito electrónico autónomo y un conjunto de software dedicado a la recuperación y almacenamiento de datos generados y transmitidos por el circuito.\\
+El mismo, debe ser capaz de permitir a las actuales redes de distribución de energía eléctrica reportar su estado actual de operación al centro de monitoreo.
 \end{consigna}
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+\begin{consigna}{black}
+Se pretende desarrollar un prototipo de HW capaz de ser autosuficiente en cuanto a la conversión, acumulación y gestión de energía eléctrica con el objeto de alimentar y permitir su operación en estado autónomo y permanente. Para ello se desarrollará un circuito de micro energy harvesting basado en rectificadores de bajas pérdidas, acumuladores aptos para la aplicación final y un conversor DC/DC de alta eficiencia.\\
+Se desarrollará una etapa de medición de valor eficaz de corriente alterna, con el objeto de medir la intensidad de corriente que actualmente circula por el conductor conectado a la salida de baja tensión e inmediatamente después del fusible aéreo de protección.\\
+Agregado a los módulos mencionados anteriormente, un microcontrolador se encargará de la gestión de energía de todo el HW y de digitalizar todas las mediciones realizadas para finalmente enviarlas al centro de operaciones a traves de un módulo de comunicación.\\
+Los BES se albergaran en una computadora de bajo costo la cual proporcionará suficientes recursos para su operación y ensayo en la etapa de desarollo.\\
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
+No es parte del alcance del presente proyecto llegar a una etapa de lanzamiento del producto a clientes finales, sino la de lograr un demostrador tecnológico. Sin embargo, si los tiempos lo permiten y se logra contar con una infraestructura adecuada, se desean realizar ensayos end-to-end en laboratorio sobre el sistema, involucrando los prototipos de hardware que fueran desarrollados, y una integración mínima entre los BES y la red LoRaWAN ya existente.\\
 \end{consigna}
 
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
-
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
-
+\begin{consigna}{black}
+Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
-\item Supuesto 1
-\item Supuesto 2...
+\item El autor del trabajo no tendrá ningún problema para hacerse de los insumos necesarios para alcanzar los objetivos incurriendo a distribuidores de componentes en el mercado local.
+\item Al momento de ensayar el sistema, se debe contar con acceso a una red LoRaWAN operativa como por ejemplo The Things Network.
+\item El autor no tendrá en ningún momento limitaciones de movilidad.
+\item En caso de ser necesario realizar ensayos end-to-end, el autor deberá incurrir en la fabricación de un banco de ensayos apropiado para simular los casos de uso y probar el sistema en su conjunto como así disponer de instrumentos patrones para contrastar y verificar el correcto funcionamiento, pudiendo así impactar la fecha final de entrega de los items listados en el punto 5.
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
 \end{consigna}
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
-
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
-
+\begin{consigna}{black}
 \begin{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Grupo de requerimientos asociados con hardware
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2
-	\item Requerimiento 3 (prioridad menor)
+	\item Respetuoso con el medioambiente.
+	\item Compacto.
+	\item De fácil comisionamiento y puesta en funcionamiento.
+	\item Bajo consumo en modo ocioso.
+	\item Mínimo mantenimiento in-situ.
+	\item Agnóstico a la frecuencia de operación de la red 50/60 Hz.
+	\item Agnóstico a la tensión de fase del sistema de distribución 110/220 Voltios.
 	\end{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Grupo de requerimientos asociados con software
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2 (prioridad menor)
+	\item Tanto el software a desarrollar para el firmware del microcontrolador, como para los BES se deberán desarrollar haciendo uso de un lenguaje que permita celeridad en el desarrollo, fácil integración entre ambas partes, ensayos, verificaciones y futuro mantenimiento.
 	\end{enumerate}
+\item Grupo de requerimientos asociados con ensayos de integración
+\begin{enumerate}
+	\item Red LoRaWAN disponible y operativa con buena cobertura.
+	\item Conectividad a internet para verificación de correcto funcionamiento del sistema.
+\end{enumerate}
 \end{enumerate}
 
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-\item Ser breve y conciso (nadie lee cosas largas). 
-\item Ser específico: no dejar lugar a confusiones.
-\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
 
 \end{consigna}
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Cosas como: 
+\begin{consigna}{black}
 \begin{itemize}
-\item Manual de uso
 \item Diagrama esquemático
-\item Código fuente
+\item Código fuente del firmware 
 \item Diagrama de instalación
 \item Informe final
 
@@ -289,36 +268,105 @@ Cosas como:
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
-
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
-
+\begin{consigna}{black}
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Grupo de tareas asociadas al hardware (Total: 472 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\end{enumerate}
-\item Grupo de tareas 2
-	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\end{enumerate}
-	\item Grupo de tareas 3
-	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
-	\end{enumerate}
-\end{enumerate}
+			 \item Transductor de corriente. (Total: 20 hs)
+			 \begin{enumerate}
+			 	\item Análisis de transductores aptos para el hardware a desarrollar. (5 hs)
+			 	\item Selección de componentes. (5 hs)
+			 	\item Ensayo y evaluación del transductor de manera individual. (10 hs)
+			 \end{enumerate}
+			
+			 \item Etapa de circuito de selección. (Total: 20 hs)
+			 \begin{enumerate}
+			 	\item Análisis de alternativas técnicas. (10 hs)
+			 	\item Selección de componentes en base a los requerimientos de hardware presentados en el punto \ref{sec:requerimientos}. (6 hs)
+			 	\item Ensayo del circuito de selección de manera individual. (4 hs)
+			 \end{enumerate}			
+			
+			 \item Etapa de rectificación y filtrado. (Total: 53 hs)
+			 \begin{enumerate}
+				\item Análisis comparativo de alternativas para técnicas de rectificacion. (30 hs)
+				\item Selección de componentes encargados de la etapa de rectificación. (10 hs)
+				\item Ensayo de la etapa de rectificación de manera individual. (5 hs)
+				\item Evaluación de resultados. (8 hs)
+			 \end{enumerate}
+			
+			 \item Etapa de acumulación de energía. (Total: 60 hs)
+			 \begin{enumerate}
+			 	\item Análisis de alternativas viables para acumulación de energía acorde a los requerimientos de hardware presentados en la etapa \ref{sec:requerimientos}. (10 hs)
+			 	\item Selección de la etapa de acumulacion de energía. (15 hs)
+			 	\item Ensayo de la etapa de acumulación de energía de manera individual. (20 hs)
+			 	\item Evaluación de resultados y estimación de la autonomía de operación en función de diferentes perfiles de consumo. (15 hs)
+			 \end{enumerate}
+			 
+			 \item Etapa de elevación de tensión. (Total: 20 hs)
+			 \begin{enumerate}
+			 	\item Análisis de alternativas técnicas para elevación de tensión aptas para el hardware a desarrollar. (15 hs)
+			 	\item Ensayo y evaluación de la etapa de elevación de tensión de manera individual. (5 hs)
+			 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+			 \item Etapa de medición de corriente. (Total: 45 hs)
+			 \begin{enumerate}
+			 	\item Análisis de alternativas para realizar la medición del valor eficaz de corriente para el hardware a desarrollar. (20 hs)
+			 	\item Selección de alternativa acorde a los requerimientos de hardware presentados en la etapa \ref{sec:requerimientos}. (15 hs)
+			 	\item Ensayo y evaluación de la etapa de medición de valor eficaz de manera individual. (10 hs)
+			 \end{enumerate}
+			 
+			 \item Etapa de elevación de tensión. (Total: 24 hs)
+			 \begin{enumerate}
+			 	\item Análisis de alternativas técnicas para filtrado y amplificación. (10 hs)
+			 	\item Selección de componentes. (4 hs)
+			 	\item Ensayo y evaluación de la etapa de filtrado y amplificación de manera individual. (10 hs)
+			 \end{enumerate}
+			 
+			 \item Microcontrolador y módulo de comunicaciones-. (Total: 100 hs)
+			 \begin{enumerate}
+			 	\item Análisis de microcontroladores y módulos de comunicación aptos para la aplicación. (40 hs)
+			 	\item Selección acorde al propósito y alcance del proyecto. (20 hs)
+			 	\item Pruebas de laboratorio del microcontrolador y modulo de comunicación de manera individual. (40 hs)
+			 \end{enumerate}
+			 \item Circuito impreso. (Total: 130)
+			 \begin{enumerate}
+			 	\item Ruteo del circuito impreso. (60 hs)
+			 	\item Inspección. (20 hs)
+			 	\item Montaje y soldado de componentes. (40 hs)
+			 	\item Depuración. (10 hs)
+			 \end{enumerate}			 			 			 
+		\end{enumerate}
+				
+	\item Grupo de tareas asociadas al software (Total: 220)
+	\begin{enumerate}
+		\item Tareas asociadas al firmware del microcontrolador (Total: 110 hs)
+			\begin{enumerate}
+				\item Definición de la "lógica de negocio" que regirá la operación del hardware a instalar in-situ. (10 hs)
+				\item Prototipado del firmware. (60 hs)
+				\item Depuración de errores. (20 hs)
+				\item Pruebas unitarias. (20 hs)
+			\end{enumerate}
+		
+		 \item Tareas asociadas a los BES (Total: 110 hs)
+			\begin{enumerate}
+				\item Definición de la lógica de operación de cada servicio. (20 hs)
+				\item Desarrollo del software. (50 hs)
+				\item Pruebas de integración. (20 hs)
+				\item Depuración de errores. (20 hs)
+			\end{enumerate}				
+		
+		\end{enumerate}
+		
+		 \item Tareas asociadas a pruebas de integración. (Total: 105 hs)
+		 \begin{enumerate}
+		 	\item Definición de los casos de ensayo. (20 hs)
+		 	\item Desarrollo del software. (50 hs)
+		 	\item Ejecución de las pruebas. (15 hs)
+		 	\item Depuración de errores. (20 hs)
+		 \end{enumerate}		
+	\end{enumerate}
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
+Cantidad total de horas: (797 hs)
 
 \end{consigna}
 
