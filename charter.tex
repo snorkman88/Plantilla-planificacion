@@ -1,6 +1,11 @@
 % !TeX spellcheck = <none>
 \documentclass[11pt]{charter}
 \usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage[official]{eurosym}
+\usepackage{afterpage}
+\usepackage{lipsum}
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
@@ -68,14 +73,17 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                                          & 22/06/2020 \\ \hline
 1.2      & Avances hasta el desglose de trabajo en tareas.                                 & 10/07/2020 \\ \hline
-1.3      &  \shortstack[l]{
-	Se corrigen errores ortográficos y espaciado entre párrafos. \\
-	Se agranda el tamaño de las figuras 1 y 2.\\
-	Marcelo E. Romeo pasa a ocupar el rol de cliente.\\
-	Se corrigen los requerimientos y estimaciones del desglose del\\
-	trabajo en tareas.
-}
+1.3      & Se corrigen errores ortográficos y espaciado entre párrafos. \newline
+	Se agranda el tamaño de las figuras 1 y 2.\newline
+	Marcelo E. Romeo pasa a ocupar el rol de cliente.\newline
+	Se corrigen los requerimientos y estimaciones del desglose del trabajo en tareas.\newline
+	Se agregan tareas de documentación
+%\shortstack[l]{}
 & 17/07/2020 \\ \hline
+
+1.4      & Se desarrollan los puntos 6 al 11.\newline
+	Se modifica el valor del presupuesto en base a la cotización del día del Banco Central de la República Argentina.\newline
+& 31/07/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -92,7 +100,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema embebido que sea capaz de determinar valores eficaces de corriente alterna en redes de distribución de baja tensión y enviarlos a un centro de operaciones. Será no invasivo y autónomo. Tendrá un presupuesto preliminar estimado de 671 hs de trabajo y \$100.000, cien mil pesos argentinos, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema embebido que sea capaz de determinar valores eficaces de corriente alterna en redes de distribución de baja tensión y enviarlos a un centro de operaciones. Será no invasivo y autónomo. Tendrá un presupuesto preliminar estimado de 676 hs de trabajo y \$887.356, ochocientos ochenta y siete mil trescietos cincuenta y seis pesos argentinos, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -186,6 +194,7 @@ Cliente    & \supname & \pertesupname & Docente investigador \\ \hline
 Orientador    & \supname	      & \pertesupname 	& Docente investigador \\ \hline
 Colaborador & Dr. Ing. Eduardo O. Sosa  &Universidad Nacional de Misiones &Docente Investigador    	\\ \hline
 Colaborador & Ing. Germán A. Xánder     &Universidad Nacional de Misiones &Docente Investigador    	\\ \hline
+Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
  
@@ -245,31 +254,31 @@ Para el desarrollo del presente proyecto se supone que:
 	\item El dispositivo deberá ser de tipo \textit{plug and play}.
 	\item El circuito impreso no deberá ocupar un volumen mayor a 10x10x5 cm.
 	\item Basarse en un microcontrolador ESP32 y disponer de:
-	\begin{itemize}
+	\begin{enumerate}[label*=\arabic*.]
 		\item 4 entradas analógicas.
 		\item 3 salidas digitales.
 		\item Unidad UART.
 		\item Integrar un módulo de comunicaciones LoRa.
-	\end{itemize}
+	\end{enumerate}
 	\item Deberá tener al menos 12 horas de autonomía de funcionamiento.
 	\item Bajo consumo en modo ocioso: el consumo del hardware en total, no deberá superar los 5 mA cuando no está midiendo ni transmitiendo.
 	\item El circuito elevador de tensión DC-DC deberá:
-	\begin{itemize}
+	\begin{enumerate}[label*=\arabic*.]
 		\item Funcionar con tensiones menores a 2V en la entrada.
 		\item Otorgar 5 Volts a la salida.
 		\item Ser capaz de otorgar 300 miliamperes a la salida.
-	\end{itemize}
+	\end{enumerate}
 	\item El transformador de corriente debe:
-	\begin{itemize}
+	\begin{enumerate}[label*=\arabic*.]
 		\item Ser de tipo núcleo partido.
 		\item Admitir 100 Amperes de corriente en el circuito primario y un máximo 5 Amperes en el circuito secundario.
-	\end{itemize}
+	\end{enumerate}
 	\item \label{req_relay} El relay encargado de cambiar el modo de operación debe:
-	\begin{itemize}
+	\begin{enumerate}[label*=\arabic*.]
 		\item Ser de tipo doble invesor sin retención.
 		\item Su bobina debe poder energizarse con 5V o menos.
 		\item Soportar al menos 5 Amperes de corriente por los contactos.
-	\end{itemize} 
+	\end{enumerate} 
 	\item Debe funcionar de manera independiente a la frecuencia de operación de la red 50/60 Hz.
 	\item Debe funcionar de manera independiente a la tensión de fase del sistema de distribución 110/220 Voltios.
 	\end{enumerate}
@@ -299,6 +308,9 @@ Para el desarrollo del presente proyecto se supone que:
 \end{enumerate}
 %\end{consigna}
 
+\section{Historias de usuarios (\textit{Product backlog})}
+\label{sec:backlog}
+
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 %\begin{consigna}{black}
@@ -324,7 +336,7 @@ Para el desarrollo del presente proyecto se supone que:
 \item Grupo de tareas asociadas al hardware (Total: 300 hs)
 	\begin{enumerate}
 		 \item Transductor de corriente. (Total: 16 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Análisis de transductores aptos para el hardware a desarrollar. (5 hs)
 			 	\item Selección de componentes. (3 hs)
 			 	\item Ensayo y evaluación del transductor de manera individual. (4 hs)
@@ -332,7 +344,7 @@ Para el desarrollo del presente proyecto se supone que:
 			 \end{enumerate}
 			
 		 \item Etapa de circuito de selección. (Total: 24 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Análisis de alternativas disponibles en el mercado. (10 hs)
 			 	\item Selección de relays aptos en base a los requerimientos: tensión de bobina de 5 Volts y 5 Amperes de corriente. (6 hs)
 			 	\item Ensayo del circuito de selección de manera individual. (4 hs)
@@ -340,7 +352,7 @@ Para el desarrollo del presente proyecto se supone que:
 			 \end{enumerate}			
 			
 		 \item Etapa de rectificación y filtrado. (Total: 49 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 				\item Análisis comparativo de alternativas para técnicas de rectificacion. (30 hs)
 				\item Selección de componentes encargados de la etapa de rectificación. (10 hs)
 				\item Ensayo de la etapa de rectificación de manera individual. (5 hs)
@@ -348,7 +360,7 @@ Para el desarrollo del presente proyecto se supone que:
 			 \end{enumerate}
 			
 		 \item Etapa de acumulación de energía. (Total: 35 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Análisis comparativo y selección de alternativas viables acorde al requerimiento de autonomía de operación. (10 hs)
 			 	\item Ensayo de carga y descarga del acumulador de manera individual. (10 hs)
 			 	\item Evaluación de resultados y estimación de la autonomía de operación en función de diferentes perfiles de consumo. (10 hs)
@@ -356,20 +368,20 @@ Para el desarrollo del presente proyecto se supone que:
 			 \end{enumerate}
 			 
 		 \item Etapa de elevación de tensión. (Total: 20 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Análisis de alternativas técnicas para elevación de tensión aptas para el hardware a desarrollar. (15 hs)
 			 	\item Ensayo y evaluación de la etapa de elevación de tensión de manera individual. (5 hs)
 			 \end{enumerate}
 
 		 \item Etapa de medición de corriente. (Total: 34 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Análisis comparativo y selección de un ciruito integrado dedicado a realizar la medición del valor eficaz de corriente. (20 hs)
 			 	\item Ensayo y evaluación de la etapa de medición de valor eficaz de manera individual. (10 hs)
 			 	\item Documentación de ensayos. (4 hs)
 			 \end{enumerate}
 			 
 		 \item Etapa de acondicionamiento de señal posterior a la medición de corriente. (Total: 13 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Análisis de alternativas técnicas para filtrado y amplificación. (4 hs)
 			 	\item Selección de componentes. (2 hs)
 			 	\item Ensayo y evaluación de la etapa de filtrado y amplificación de manera individual. (4 hs)
@@ -377,13 +389,13 @@ Para el desarrollo del presente proyecto se supone que:
 			 \end{enumerate}
 			 
 		 \item Microcontrolador y módulo de comunicaciones. (Total: 50 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Análisis y selección de microcontroladores y módulos de comunicaciónes aptos para la aplicación. (30 hs)
 			 	\item Pruebas de laboratorio del microcontrolador y módulo de comunicaciónes de manera individual. (20 hs)
 			 \end{enumerate}
 		
 		 \item Circuito impreso. (Total: 59 hs)
-			 \begin{enumerate}
+			 \begin{enumerate}[label*=\arabic*.]
 			 	\item Ruteo del circuito impreso. (40 hs)
 			 	\item Inspección. (6 hs)
 			 	\item Montaje y soldado de componentes. (8 hs)
@@ -391,10 +403,10 @@ Para el desarrollo del presente proyecto se supone que:
 			 \end{enumerate}			 			 			 
 		\end{enumerate}
 
-	\item Grupo de tareas asociadas al software (Total: 271 hs)
+	\item Grupo de tareas asociadas al software (Total: 206 hs)
 	\begin{enumerate}
 		\item Tareas asociadas al firmware del microcontrolador (Total: 110 hs)
-			\begin{enumerate}
+			\begin{enumerate}[label*=\arabic*.]
 				\item Definición de la "lógica de negocio" que regirá la operación del hardware a instalar \textit{in-situ}. (10 hs)
 				\item Prototipado del firmware. (60 hs)
 				\item Depuración de errores. (20 hs)
@@ -402,7 +414,7 @@ Para el desarrollo del presente proyecto se supone que:
 			\end{enumerate}
 		
 		 \item Tareas asociadas a los BES (Total: 96 hs)
-			\begin{enumerate}
+			\begin{enumerate}[label*=\arabic*.]
 				\item Diseño de la arquitectura y lógica de operación de cada servicio. (14 hs)
 				\item Instalación de los servicios. (30 hs)
 				\item Creación de tablas en base de datos para el almacenamiento de valores históricos. (4 hs)
@@ -420,114 +432,199 @@ Para el desarrollo del presente proyecto se supone que:
 		 	\item Ejecución de las pruebas. (15 hs)
 		 	\item Depuración de errores. (10 hs)
 		\end{enumerate}		
-	\end{enumerate}
 
-Cantidad total de horas: (671 hs)
+	\item Grupo de tareas asociadas al cierre del proyecto (Total: 70 hs)
+		\begin{enumerate}
+			\item Elaboración de la memoria técnica. (50 hs)
+			\item Elaboración de la presentación final. (20 hs)
+		\end{enumerate}
+	\end{enumerate}
+	
+Cantidad total de horas: (676 hs)
 
 %\end{consigna}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
-
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
-
 \begin{figure}[htpb]
-\centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
-\label{fig:AoN}
+	\centering 
+	\includegraphics[width=\textwidth]{./Figuras/activity_on_node/version_compacta/aon.png}
+	\caption{Diagrama en \textit{Activity on Node}}
+	\label{fig:AoN}
 \end{figure}
-
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
 
 
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
-
-\begin{consigna}{red}
-Utilizar el software Gantter for Google Drive o alguno similar para dibujar el diagrama de Gantt.
-
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre las cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
+\begin{figure}[H]
+	\centering 
+	\includegraphics[width=\textwidth]{./Figuras/gantt/inicio-24.png}
+	\includegraphics[width=\textwidth]{./Figuras/gantt/25-29.png}
+	%\caption{Diagrama en \textit{Activity on Node}}
+	\label{fig:tablegantt1}
 \end{figure}
-
-\end{consigna}
+\begin{figure}[H]
+	\centering 
+	\includegraphics[width=\textwidth]{./Figuras/gantt/3-fin.png}
+	\caption{Tabla para confección del diagrama de \textit{gantt}}
+	\label{fig:tablegantt2}
+\end{figure}
+\afterpage{
+\begin{landscape}
+\begin{figure}[H]
+	\centering 
+	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/gantt1-24.png}
+	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/gantt25-29.png}
+	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/gantt3-fin.png}
+	\includegraphics[width=1.35\textwidth]{./Figuras/gantt/diagrama/v2/inicio.png}
+	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/v2/274-fin.png}
+	\caption{Diagrama de \textit{gantt}}
+	\label{fig:diagantt1}
+\end{figure}
+\begin{figure}[H]
+	\centering 
+	\includegraphics[width=1.5\textwidth]{./Figuras/gantt/diagrama/v2/fin.png}
+	\caption{Diagrama de \textit{gantt}, continuación}
+	\label{fig:diagantt2}
+\end{figure}
+\end{landscape}
+}
 
 \section{9. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
 
-
-\begin{table}[htpb]
-\label{tab:recursos}
-\centering
-\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|X|@{}}
-\hline
-\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & Material 1 & Material 2 & Material 3 & Material 4 \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
+			\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & PC & Laboratorio & Placa PCB & Raspberry Pi \\ \hline
+	
+			\rowcolor[HTML]{0000FF} 
+			\textcolor{black}{1.} & \multicolumn{5}{|c|}{\textcolor{black}{Grupo de tareas asociadas a planificación}} \\ \cline{1-6}
+			1.1 & Diseño de la arquitectura global & 15 &  &  &  \\ \hline
+			1.2 & Documentación del plan de proyecto & 20 &  &  &  \\ \hline
+	
+	
+			\rowcolor[HTML]{FF9E03} 
+			\textcolor{black}{2.1} & \multicolumn{5}{|c|}{Transductor de corriente.} \\ \cline{1-6}
+			2.1.1 & Análisis de transductores aptos para el hardware a desarrollar & 5 &  &  &  \\ \hline
+			2.1.2 & Selección de componentes & 3 &  &  &  \\ \hline
+			2.1.3 & Ensayo y evaluación del transductor de manera individual & 4 & 4 &  &  \\ \hline
+			2.1.4 & Documentación de resultados del ensayo del transductor & 4 &  &  &  \\ \hline
+	
+	
+			\rowcolor[HTML]{5BB576} 
+			\textcolor{black}{2.2} & \multicolumn{5}{|c|}{Etapa de circuito de selección} \\ \cline{1-6}
+			2.2.1 & Análisis de alternativas disponibles en el mercado & 10 &  &  &  \\ \hline
+			2.2.2 & Selección de relays aptos en base a los requerimientos & 6 &  &  &  \\ \hline
+			2.2.3 & Ensayo del circuito de selección de manera individual & 4 & 4 &  &  \\ \hline
+			2.2.4 & Documentación de ensayo & 4 &  &  &  \\ \hline
+	
+	
+			\rowcolor[HTML]{A232ED} 
+			\textcolor{black}{2.3} & \multicolumn{5}{|c|}{Etapa de rectificación y filtrado} \\ \cline{1-6}
+			2.3.1 & Análisis comparativo de alternativas para técnicas de rectificacion & 30 &  &  &  \\ \hline
+			2.3.2 & Selección de componentes encargados de la etapa de rectificación & 10 &  &  &  \\ \hline
+			2.3.3 & Ensayo de la etapa de rectificación de manera individual & 5 & 5 &  &  \\ \hline
+			2.3.4 & Documentación de ensayos & 4 &  &  &  \\ \hline
+	
+			
+			\rowcolor[HTML]{F7F42A} 
+			\textcolor{black}{2.4} & \multicolumn{5}{|c|}{Etapa de acumulación de energía} \\ 	\cline{1-6}
+			2.4.1 & Análisis y selección de alternativas viables acorde al requerimiento de autonomía de operación & 10 &  &  &  \\ \hline
+			2.4.2 & Ensayo de carga y descarga del acumulador de manera individual & 10 & 10 &  &  \\ \hline
+			2.4.3 & Evaluación de resultados y estimación de la autonomía de operación & 10 &  &  &  \\ \hline
+			2.4.4 & Documentación ensayos & 5 &  &  &  \\ \hline		
+			
+			\rowcolor[HTML]{99F285} 
+			\textcolor{black}{2.5} & \multicolumn{5}{|c|}{Etapa de elevación de tensión} \\ \cline{1-6}
+			2.5.1 & Análisis de alternativas técnicas para elevación de tensión & 15 &  &  &  \\ \hline   
+			2.5.2 & Ensayo y evaluación de la etapa de elevación de tensión & 5 & 5 &  &  \\ \hline 		
+			
+			
+			\rowcolor[HTML]{FBFF00} 
+			\textcolor{black}{2.6}& \multicolumn{5}{|c|}{Etapa de medición de corriente} \\ \cline{1-6}		
+			2.6.1 & Análisis y selección de un chip dedicado a realizar la medición RMS de corriente & 20 &  &  &  \\ \hline
+			2.6.2 & Ensayo de la etapa de medición de valor RMS & 10 & 10 &  &  \\ \hline   
+			2.6.3 & Documentación de ensayos & 4 &  &  &  \\ \hline
+		
+			
+			\rowcolor[HTML]{FF3650} 
+			\textcolor{black}{2.7}& \multicolumn{5}{|c|}{Etapa de acondicionamiento de señal posterior a la medición de corriente} \\ \cline{1-6}		
+			2.7.1 & Análisis de alternativas técnicas para filtrado y amplificación & 4 &  &  &  \\ \hline
+			2.7.2 & Selección de componentes & 2 &  &  &  \\ \hline   
+			2.7.3 & Ensayo de la etapa de filtrado y amplificación & 4 & 4 &  &  \\ \hline   
+			2.7.4 & Documentación de ensayos & 3 &  &  &  \\ \hline
+	
+			
+			\rowcolor[HTML]{D48B1E} 
+			\textcolor{black}{2.8}& \multicolumn{5}{|c|}{Microcontrolador y módulo de comunicaciones} \\ \cline{1-6}		
+			2.8.1 & Análisis y selección de microcontroladores y módulos de comunicaciónes & 30 &  &  &  \\ \hline   
+			2.8.2 & Pruebas de laboratorio del microcontrolador y módulo de comunicaciónes & 20 & 20 &  &  \\ \hline
+	
+			
+			\rowcolor[HTML]{B34791} 
+			\textcolor{black}{2.9}& \multicolumn{5}{|c|}{Circuito impreso} \\ \cline{1-6}		   
+			2.9.1 & Ruteo del circuito impreso & 40 &  &  &  \\ \hline   
+			2.9.2 & Inspección & 6 &  &  &  \\ \hline    
+			2.9.3 & Montaje y soldado de componentes & 8 & 8 & 8 &  \\ \hline
+			2.9.4 & Prueba y depuración & 5 & 5 & 5 &  \\ \hline		
+	
+			
+			\rowcolor[HTML]{0A12FC} 
+			\textcolor{black}{3.1} & \multicolumn{5}{|c|}{Tareas asociadas al firmware del microcontrolador} \\ \cline{1-6}		   
+			3.1.1 & Definición de la ”lógica de negocio”que regirá la operación del hardware & 10 &  &  &  \\ \hline   
+			3.1.2  & Prototipado del firmware & 60 &  &  &  \\ \hline   
+			3.1.3  & Depuración de errores & 20 &  &  &  \\ \hline
+			3.1.4  & Pruebas unitarias & 20 &  &  &  \\ \hline
+	
+		
+			\rowcolor[HTML]{95FF00} 
+			\textcolor{black}{3.2} & \multicolumn{5}{|c|}{Tareas asociadas los BES} \\ \cline{1-6}		   
+			3.2.1  & Diseño de la arquitectura y lógica de operación de cada servicio & 14 &  &  &  \\ \hline   
+			3.2.2  & Instalación de los servicios & 30 &  &  & 30 \\ \hline   
+			3.2.3  & Creación de tablas en base de datos para el almacenamiento de valores históricos & 4 &  &  & 4 \\ \hline   
+			3.2.4  & Desarrollo del software encargado de recuperar los datos de la red LoRaWAN & 20 &  &  & 20 \\ \hline
+			3.2.5  & Desarrollo de la interfaz gráfica en Grafana & 8 &  &  & 8 \\ \hline   
+			3.2.6  & Pruebas de integración & 15 &  &  & 15 \\ \hline
+			3.2.7  & Depuración de errores & 5 &  &  & 5 \\ \hline
+			
+			
+			\rowcolor[HTML]{B8BAB5} 
+			\textcolor{black}{4} & \multicolumn{5}{|c|}{Grupo de tareas asociadas a pruebas end-to-end} \\ \cline{1-6}		   
+			4.1  & Definición de los casos de ensayo & 20 &  &  &  \\ \hline   
+			4.2  & Desarrollo del software & 20 &  &  & 20 \\ \hline
+			4.3  & Ejecución de las pruebas & 15 & 15 & 15 & 15 \\ \hline   
+			4.4  & Depuración de errores & 10 & 10 & 10 & 10 \\ \hline
+			
+			
+			\rowcolor[HTML]{ADF3FF} 
+			\textcolor{black}{5} & \multicolumn{5}{|c|}{Grupo de tareas asociadas al cierre del proyecto} \\ \cline{1-6}		   
+			5.1  & Elaboración de la memoria técnica & 50 &  &  &  \\ \hline   
+			5.2  & Elaboración de la presentación final & 20 &  &  &  \\ \hline
+	
+	
+			\rowcolor[HTML]{C0C0C0} 
+			\multicolumn{2}{|c|}{\cellcolor[HTML]{C0C0C0} Totales} &676 hs & 100 hs &38  hs &  127 hs \\ \hline
+		\end{tabular}%
+	}
 \end{table}
 
+{\footnotesize
+	Referencias:
+	\begin{itemize}
+		\item PC = Computadora personal con todo el software necesario para el desarrollo de proyecto.
+		\item Laboratorio = Espacio físico donde se realizaran diferentes ensayos.
+		\item Placa PCB = Circuito impreso del prototipo a desarrollar.
+		\item Raspberry Pi = Computadora de bajo costo donde correran los BES.
+	\end{itemize}
+} %footnotesize
 
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
-
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
+Los precios expresados en la siguiente tabla se encuentran en Euros \euro{}.\\
 
 \begin{table}[htpb]
 \centering
@@ -540,24 +637,51 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+
+ Transformador de intensidad tipo núcleo partido y clase 0.5&
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{92.00} &
+  \multicolumn{1}{c|}{92.00} \\ \hline
+
+ Circuito impreso &
+ \multicolumn{1}{c|}{1} &
+ \multicolumn{1}{c|}{40.00} &
+ \multicolumn{1}{c|}{40.00} \\ \hline
+
+ Componentes electrónicos varios * &
+ \multicolumn{1}{c|}{1} &
+ \multicolumn{1}{c|}{100.00} &
+ \multicolumn{1}{c|}{100.00} \\ \hline
+
+ Módulo de desarrollo basado en ESP32 y transceptor LoRa *&
+ \multicolumn{1}{c|}{1} &
+ \multicolumn{1}{c|}{40.00} &
+ \multicolumn{1}{c|}{40.00} \\ \hline
+
+ Raspberry Pi 3 B+&
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{45.00} &
+  \multicolumn{1}{c|}{45.00} \\ \hline
+  
+ Acumulador&
+ \multicolumn{1}{c|}{1} &
+ \multicolumn{1}{c|}{10.00} &
+ \multicolumn{1}{c|}{10.00} \\ \hline 
+
+ Viáticos de movilidad&
+ \multicolumn{1}{c|}{1} &
+ \multicolumn{1}{c|}{600.00} &
+ \multicolumn{1}{c|}{600.00} \\ \hline 
+ 
+
+ Honorarios profesionales&
+ \multicolumn{1}{c|}{676} &
+ \multicolumn{1}{c|}{10} &
+ \multicolumn{1}{c|}{6760.00} \\ \hline
+
+
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{7687.00} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -565,33 +689,39 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+
+\multicolumn{1}{|l|}{Multímetro digital True RMS}
+	&
+   1&
+   100.00&
+   100.00\\ \hline
+   
+   
+\multicolumn{1}{|l|}{Generador de señales} &
+1&
+80.00&
+80.00\\ \hline
+
+
+\multicolumn{1}{|l|}{Servicios de energía eléctrica e internet} &
+1&
+70.00&
+70.00\\ \hline
+   
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{250.00} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
+   7937.00\\ \hline
 \end{tabularx}%
 \end{table}
-
+\euro{7937} = 887.356 Pesos Argentinos*\\
+(*) Valores aproximados
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
-\begin{consigna}{red}
-Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
 
-\begin{table}[htpb]
+\begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|}
@@ -605,18 +735,65 @@ Establecer la matriz de asignación de responsabilidades y el manejo de la autor
   \cellcolor[HTML]{C0C0C0} &
   Responsable &
   Orientador &
-  Equipo &
+  Colaborador &
   Cliente \\ \cline{3-6} 
 \rowcolor[HTML]{C0C0C0} 
 \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
   \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
   \authorname &
   \supname &
-  Nombre de alguien &
+  Ing. Germán A. Xánder &
   \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+   1.1& Diseño de la arquitectura global  & P & A & C & A \\ \hline
+   1.2& Documentación del plan de proyecto & P & A/C & C & A \\ \hline
+ 2.1.1& Análisis de transductores aptos para el hardware a desarrollar & P & C/A & C &  \\ \hline
+ 2.1.2& Selección de componentes & P & C & C & I \\ \hline
+ 2.1.3& Ensayo y evaluación del transductor de manera individual & P & C/A & C &  \\ \hline
+ 2.1.4& Documentación de resultados del ensayo del transductor & P & A &  &  \\ \hline
+ 2.2.1& Análisis de alternativas disponibles en el mercado & P &  &  &  \\ \hline
+ 2.2.2& Selección de relays aptos en base a los requerimientos & P & C/A & C &  \\ \hline
+ 2.2.3& Ensayo del circuito de selección de manera individual & P &  &  &  \\ \hline
+ 2.2.4& Documentación de ensayo & P & A &  &  \\ \hline
+ 2.3.1& Análisis comparativo de alternativas para técnicas de rectificacion & P & C & C &  \\ \hline
+ 2.3.2& Selección de componentes encargados de la etapa de rectificación & P & C/A & C &  \\ \hline
+ 2.3.3& Ensayo de la etapa de rectificación de manera individual & P &  &  &  \\ \hline
+ 2.3.4& Documentación de ensayos & P & A &  &  \\ \hline
+ 2.4.1& Análisis y selección de alternativas viables acorde al requerimiento de autonomía de operación & P & C &  &  \\ \hline
+ 2.4.2& Ensayo de carga y descarga del acumulador de manera individual & P &  &  &  \\ \hline
+ 2.4.3& Evaluación de resultados y estimación de la autonomía de operación & P & C &  &  \\ \hline
+ 2.4.4& Documentación ensayos & P & A &  &  \\ \hline
+ 2.5.1& Análisis de alternativas técnicas para elevación de tensión & P &  &  &  \\ \hline
+ 2.5.2& Ensayo y evaluación de la etapa de elevación de tensión & P & C &  &  \\ \hline
+ 2.6.1& Análisis y selección de un chip dedicado a realizar la medición RMS de corriente & P & C & C &  \\ \hline
+ 2.6.2& Ensayo de la etapa de medición de valor RMS & P &  &  &  \\ \hline
+ 2.6.3& Documentación de ensayos & P & A &  &  \\ \hline
+ 2.7.1& Análisis de alternativas técnicas para filtrado y amplificación & P & C & C &  \\ \hline
+ 2.7.2& Selección de componentes & P & C/A & C &  \\ \hline
+ 2.7.3& Ensayo de la etapa de filtrado y amplificación & P &  &  &  \\ \hline
+ 2.7.4& Documentación de ensayos & P & A &  &  \\ \hline
+ 2.8.1& Análisis y selección de microcontroladores y módulos de comunicaciónes & P &  &  &  \\ \hline
+ 2.8.2& Pruebas de laboratorio del microcontrolador y módulo de comunicaciónes & P &  &  &  \\ \hline
+ 2.9.1& Ruteo del circuito impreso & P & A &  &  \\ \hline
+ 2.9.2& Inspección & P & C & C &  \\ \hline
+ 2.9.3& Montaje y soldado de componentes & P &  &  &  \\ \hline
+ 2.9.4& Prueba y depuración & P &  &  &  \\ \hline
+ 3.1.1& Definición de la ”lógica de negocio”que regirá la operación del hardware & P & C &  & A \\ \hline
+ 3.1.2& Prototipado del firmware & P & C &  &  \\ \hline
+ 3.1.3& Depuración de errores & P &  &  &  \\ \hline
+ 3.1.4& Pruebas unitarias & P &  &  &  \\ \hline
+ 3.2.1& Diseño de la arquitectura y lógica de operación de cada servicio & P & C & C & A \\ \hline
+ 3.2.2& Instalación de los servicios & P &  & C &  \\ \hline
+ 3.2.3& Creación de tablas en base de datos para el almacenamiento de valores históricos & P &  & C &  \\ \hline
+ 3.2.4& Desarrollo del software encargado de recuperar los datos de la red LoRaWAN & P &  & C &  \\ \hline
+ 3.2.5& Desarrollo de la interfaz gráfica en Grafana & P & C/A &  & A \\ \hline
+ 3.2.6& Pruebas de integración & P &  &  &  \\ \hline
+ 3.2.7& Depuración de errores & P &  &  &  \\ \hline
+ 4.1& Definición de los casos de ensayo & P & C/A &  & A \\ \hline
+ 4.2& Desarrollo del software & P & C & C &  \\ \hline
+ 4.3& Ejecución de las pruebas & P &  &  &  \\ \hline
+ 4.4& Depuración de errores & P & C &  &  \\ \hline
+ 5.1& Elaboración de la memoria técnica & P & A & C &  \\ \hline
+ 5.2& Elaboración de la presentación final & P & A & I & I \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -625,19 +802,12 @@ Establecer la matriz de asignación de responsabilidades y el manejo de la autor
 Referencias:
 \begin{itemize}
 	\item P = Responsabilidad Primaria
-	\item S = Responsabilidad Secundaria
 	\item A = Aprobación
 	\item I = Informado
 	\item C = Consultado
 \end{itemize}
 } %footnotesize
 
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
-
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
-
-\end{consigna}
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
