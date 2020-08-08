@@ -84,6 +84,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.4      & Se desarrollan los puntos 6 al 11.\newline
 	Se modifica el valor del presupuesto en base a la cotización del día del Banco Central de la República Argentina.\newline
 & 31/07/2020 \\ \hline
+1.5      & Se desarrollan los puntos 12 al 17                                                  & 08/08/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -797,7 +798,6 @@ Descripción &
 \end{tabular}%
 }
 \end{table}
-
 {\footnotesize
 Referencias:
 \begin{itemize}
@@ -812,29 +812,41 @@ Referencias:
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
+\begin{consigna}{black}
 a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
  
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos)
+Riesgo 1: Falta de tiempo para terminar con todas las tareas estipuladas en el desglose de trabajo en tareas.
 \begin{itemize}
-\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de severidad (S).
-\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de (O). 
+\item Severidad (6): se demoraría la entrega de toda la documentación y la presentación final.\\
+\item Probabilidad de ocurrencia (3): un desglose detallado de tareas permite programar una reasignación de prioridades mientras se mitigan los impactos.\\
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 2: No poder conseguir los materiales.
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (5): De no conseguir circuitos integrados especificos, se deberá realizar una alternativa de tipo casera con componentes discretos que cumpla con las mismas especificaciones.
+\item Probabilidad de ocurrencia (2): los componentes asociados a la etapa de hardware no son dificiles de conseguir, sin embargo, un proceso lento de exportación de los mismos es dable.
 \end{itemize}
 
-Riesgo 3:
+
+Riesgo 3: Falla en el circuito impreso
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (5): demoraría el comienzo de las pruebas end-to-end.
+\item Probabilidad de ocurrencia (3): se deberá ensayar previamente todo en un protoboard. Si funcionase sin problemas en el protoboard, la posibilidad de fallo se reduce.
 \end{itemize}
 
+
+Riesgo 4: Los servicios de backend privados especificos del proyecto se encuentran caídos al momento de realizar ensayos end-to-end.
+\begin{itemize}
+	\item Severidad (4): de no estar operativos los BES, no se podrá probar la GUI en grafana. Sin embargo, se podra verificar que los datos lleguen a la red LoRaWAN.
+	\item Probabilidad de ocurrencia (2): los servicios de BES son unicamente 3 y poseen mecanismos de monitoreo de estado antes de comenzar con los ensayos.
+\end{itemize}
+
+
+Riesgo 5: Restricciones de movilidad debido al COVID-19.
+\begin{itemize}
+	\item Severidad (6): no poder trasladarse hacia el laboratorio representaria un gran impacto al momento de ensayar las etapas de manera individual. También impactaría sobre la presentación final que debera hacerse de manera remota y no presencial.
+	\item Probabilidad de ocurrencia (7): Los indices de casos positivos son muy dispares entre las diferentes regiones de Argentina, por lo que podrían resurgir otros brotes.
+\end{itemize}
 
 b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
@@ -844,62 +856,235 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+ Riesgo 1& 6 & 3 & 18  &    &    &      \\ \hline
+ Riesgo 2& 5 & 2 & 10  &    &    &      \\ \hline
+ Riesgo 3& 5 & 3 & 15  &    &    &      \\ \hline
+ Riesgo 4& 4 & 2 & 8   &    &    &      \\ \hline
+ Riesgo 5& 6 & 7 & 42  &  3  &  1  &      \\ \hline
 \end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a ....
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 20.
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
-
-Riesgo 2: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación)
+Riesgo 5: se deberá planear el armado de un laboratorio que sea portatil y posea todas las herramientas necesarias para desarrollar las pruebas. Tambien se deberá modificar la forma y contenido de la presentación del trabajo final ante el cliente y jurado por otra que integre herramientas para video conferencia.
+\begin{itemize}
+	\item Severidad (3): al disponer del laboratorio portatil deja de ser necesario trasladarse. También impactaría sobre la presentación final que debera hacerse de manera remota y no presencial.
+	\item Ocurrencia (1): Se espera que los brotes de Los indices de casos positivos son muy dispares entre las diferentes regiones de Argentina, por lo que podrían resurgir otros brotes.
+\end{itemize}
 
 \end{consigna}
-
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
+\begin{consigna}{black}
 Para cada uno de los requerimientos del proyecto indique:
-\begin{itemize} 
-\item Req \#1: Copiar acá el requerimiento.
+%\begin{itemize} 
+%\item Req: Copiar acá el requerimiento.
+\begin{enumerate}
+	\item Grupo de requerimientos asociados con hardware
+	\begin{enumerate}[label*=\arabic*.]
+			\item El dispositivo deberá ser de tipo \textit{plug and play}.
+				\begin{itemize}
+					\item Verificación: una vez finalizado el hardware, la unica acción necesaria será instalar el transformador de corriente sobre el conductor.\\
+					\item Validación: el cliente en persona hará una prueba de comisionamiento y puesta en funcionamiento.\\
+				\end{itemize}
+				
+			\item El circuito impreso no deberá ocupar un volumen mayor a 10x10x5 cm.
+				\begin{itemize}
+					\item Verificación: se verificará el diseño de la placa antes de mandar al fabricante.\\
+					\item Validación: el cliente tendrá siempre acceso al esquematico, los diseños y hojas de datos de los componentes.\\
+				\end{itemize}
+				
+			\item Basarse en un microcontrolador ESP32 y disponer de:
+			\begin{enumerate}[label*=\arabic*.]
+				\item 4 entradas analógicas.
+					\begin{itemize}
+							\item Verificación: entre las variantes disponibles se seleccionará aquella que cumpla con este requisito.\\
+							\item Validación: se harán pruebas de laboratorio utilizando un potenciómetro.\\
+					\end{itemize}
+				\item 3 salidas digitales.
+					\begin{itemize}
+						\item Verificación: entre las variantes disponibles se seleccionará aquella que cumpla con este requisito.\\
+						\item Validación: se harán pruebas de laboratorio usando leds y pulsadores.\\
+					\end{itemize}
+				\item Unidad UART.
+					\begin{itemize}
+						\item Verificación: entre las variantes disponibles se seleccionará aquella que cumpla con este requisito.\\
+						\item Validación: se harán pruebas de laboratorio usando un adaptador UART-USB.\\
+					\end{itemize}
+				\item Integrar un módulo de comunicaciones LoRa.
+					\begin{itemize}
+						\item Verificación: en caso de no encontrarse un modulo del microcontrolador que ya lo integre, se usará un módulo a parte.\\
+						\item Validación: se harán pruebas de laboratorio contra la red LoRaWAN.\\
+					\end{itemize}
+			\end{enumerate}
+			
+			\item Deberá tener al menos 12 horas de autonomía de funcionamiento.
+				\begin{itemize}
+					\item Verificación: se realizará una prueba de laboratorio para exponer su máxima autonomia.\\
+					\item Validación: se planificará un ensayo junto con el cliente de manera presencial.\\
+				\end{itemize}
+			
+			\item Bajo consumo en modo ocioso: el consumo del hardware en total, no deberá superar los 5 mA cuando no está midiendo ni transmitiendo.
+				\begin{itemize}
+					\item Verificación: se verificarán que todas las etapas del hardware esten en modo ahorro de energía o desactivadas.\\
+					\item Validación: se realizará una medición de corriente a la salida del acumulador.\\
+				\end{itemize}
+				
+			\item El circuito elevador de tensión DC-DC deberá:
+			\begin{enumerate}[label*=\arabic*.]
+				\item Funcionar con tensiones menores a 2V en la entrada.
+					\begin{itemize}
+						\item Verificación: se buscarán módulos cuyas hojas de datos cumplan con este requisito.\\
+						\item Validación: mediante una fuente regulable se verificará que el circuito elevador comience a funcionar con menos de 2.\\
+					\end{itemize}
+					
+				\item Otorgar 5 Volts a la salida.
+					\begin{itemize}
+						\item Verificación: se buscará en su hoja de datos la tensión de salida nominal.\\
+						\item Validación: se energizará al circuito elevador mediante una fuente regulable y se conectará a la salida un multímetro para medir este valor.\\
+					\end{itemize}
+					
+				\item Ser capaz de otorgar 300 miliamperes a la salida.
+					\begin{itemize}
+						\item Verificación: se buscará en su hoja de datos su corriente máxima de salida.\\
+						\item Validación: se energizará al circuito elevador mediante una fuente regulable y se conectará a la salida una carga resistiva de 16 Ohms y medirá su corriente.\\
+					\end{itemize}
+			\end{enumerate}
+			
+			\item El transformador de corriente debe:
+			\begin{enumerate}[label*=\arabic*.]
+				\item Ser de tipo núcleo partido.
+					\begin{itemize}
+						\item Verificación: al momento de seleccionarlo se analizaran las variantes con o sin bisagras.\\
+						\item Validación: el cliente recibirá la hoja de datos del transformador de corriente seleccionado.\\
+					\end{itemize}
+				\item Admitir 100 Amperes de corriente en el circuito primario y un máximo 5 Amperes en el circuito secundario.
+					\begin{itemize}
+						\item Verificación: al momento de seleccionarlo se analizará la hoja de datos de las posibles variantes que cumplan con los requisitos.\\
+						\item Validación: el cliente recibirá la hoja de datos del transformador de corriente seleccionado.\\
+					\end{itemize}
+			\end{enumerate}
+			
+			\item El relay encargado de cambiar el modo de operación debe:
+			\begin{enumerate}[label*=\arabic*.]
+				\item Ser de tipo doble invesor sin retención.
+					\begin{itemize}
+						\item Verificación: se utilizarán las hojas de datos de los fabricantes.\\
+						\item Validación: se realizará un ensayo de laboratorio con dos leds y un pulsador.\\
+					\end{itemize}
+				\item Su bobina debe poder energizarse con 5V o menos.
+					\begin{itemize}
+						\item Verificación: se consultarán las hojas de datos del fabricante.\\
+						\item Validación: se realizará un ensayo de laboratorio con una fuente regulable incrementando su valor de manera progresiva.\\
+					\end{itemize}
+				\item Soportar al menos 5 Amperes de corriente por los contactos.
+					\begin{itemize}
+						\item Verificación: se consultarán las hojas de datos del fabricante.\\
+						\item Validación: se realizará un ensayo de laboratorio con una carga fantasma.\\
+					\end{itemize}
+			\end{enumerate}
+			
+			\item Debe funcionar de manera independiente a la frecuencia de operación de la red 50/60 Hz.
+				\begin{itemize}
+					\item Verificación: al seleccionar el transductor y el chip medidor de corriente se verificará que ambos cumplan con este requerimiento.\\
+					\item Validación: el cliente proveerá un variador de frecuencia al momento de hacer ensayos sobre 60 Hz.\\
+				\end{itemize}
+			
+			\item Debe funcionar de manera independiente a la tensión de fase del sistema de distribución 110/220 Voltios.
+				\begin{itemize}
+					\item Verificación: al seleccionar el transductor y el chip medidor de corriente se verificará que ambos cumplan con este requerimiento.\\
+					\item Validación: se haran pruebas conectando cargas a una tensíon de 110 Volts provista por un transformador de potencia.\\
+				\end{itemize}			
 
-Verificación y validación:
+	\end{enumerate}
+	\item Grupo de requerimientos asociados con el firmware
+		\begin{enumerate}[label*=\arabic*.]
+			\item Debe manejar un módulo de comunicación LoRa y protocolo LoRaWAN.
+				\begin{itemize}
+					\item Verificación: se buscarán bibliotecas aptas para el manejo del protocolo.\\
+					\item Validación: se hará una prueba de laboratorio enviando datos a la red LoRaWAN.\\
+				\end{itemize}
+			\item Deberá tener un porcentaje de cobertura de tests unitarios del 60 por ciento como mínimo.
+				\begin{itemize}
+					\item Verificación: se analizaran cuantas funciona se desarrollaron y cuantas pruebas unitarias.\\
+					\item Validación: El cliente podrá acceder a un reporte de cobertura como así también al código.\\
+				\end{itemize}
+			\item Antes configurarse en modo ocioso, debe desenergizar la etapa de medición de corriente y el módulo de comunicaciones con el objeto de ahorrar energía.
+				\begin{itemize}
+					\item Verificación: se consultara en hojas de datos de cada etapa los consumos en cada modo.\\
+					\item Validación: se medirá el consumo total del circuito al entrar en ahorro de energia.\\
+				\end{itemize}
+		\end{enumerate}
+	\item Grupo de requerimientos asociados con los BES
+		\begin{enumerate}[label*=\arabic*.]
+			\item Todos los servicios deben poder correr en una Raspberry Pi 3.
+			\begin{itemize}
+				\item Verificación: Antes de comenzar con la instalación se verificará que los servicios pueden correr sobre la arquitectura del dispositivo.\\
+				\item Validación: junto al cliente se realizarán pruebas de comunicación entre los BES.\\
+			\end{itemize}
+			
+			\item El software de los BES se desarrollará en lenguaje Python.
+			\begin{itemize}
+				\item Verificación: se solicitará asesoría al tutor y colaboradores para el desarrollo necesario.\\
+				\item Validación: sin acción asociada.\\
+			\end{itemize}
+			
+			\item Recuperar los datos de la red LoRaWAN.
+			\begin{itemize}
+				\item Verificación: Se hará uso de los logs de la API de recuperación de datos.\\
+				\item Validación: el cliente enviará datos desde un hardware de prueba a la red LoRaWAN y con el objeto de validar el mecanismo de recuperación se observarán los logs en los BES.\\
+			\end{itemize}
 
-\begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Detallar 
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Detallar  
-\end{itemize}
-
-\end{itemize}
-
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, etc.
+			\item Almacenar los datos en una tabla de MySQL.
+			\begin{itemize}
+				\item Verificación: se implementarán tablas para el almacenamiento de los datos historicos y vistas para obtener los ultimos datos.\\
+				\item Validación: el cliente enviará datos desde un hardware de prueba a la red LoRaWAN y verificará que los mismos se almacenen en la base de datos accediendo a las tablas.\\
+			\end{itemize}
+			
+			\item GUI basada en Grafana.
+			\begin{itemize}
+				\item Verificación: Se verificará una vez elaborado el dashboard, que se muestren los ultimos datos recolectados de cada nodo en la base de datos.\\
+				\item Validación: el cliente enviará datos desde un hardware de prueba la red LoRaWAN y simultaneamente tendrá acceso a la GUI.\\
+			\end{itemize}
+		\end{enumerate}
+		
+	\item Grupo de requerimientos asociados con ensayos de integración y end-to-end.
+		\begin{enumerate}[label*=\arabic*.]
+			\item El banco de ensayos de hardware debe contar con una carga fantasma de al menos
+			10 Amperes y permitir realizar interrupciones de corriente de manera programada
+			mediante una computadora adicional tipo Raspberry Pi o de manera manual.
+			\begin{itemize}
+				\item Verificación: el banco de prueba constara de una estufa halogena de al menos 2200 Watts y será accionada mediante un relay o contactor.\\
+				\item Validación: el cliente podrá probar el banco de ensayos y validar las mediciones con una pinza amperométrica el mismo.\\
+			\end{itemize}
+			
+			\item Los BES deben estar operativos al momento de realizar los ensayos.
+			\begin{itemize}
+				\item Verificación: se haran monitoreo de estado y alertas de manera automatica.\\
+				\item Validación: el cliente podrá acceder a todos los servicios de backend de manera remota en todo momento.\\
+			\end{itemize}
+			
+			\item Contar con un gateway de acceso a una red LoRaWAN como por ejemplo \textit{The Things Network}.
+			\begin{itemize}
+				\item Verificación: se contara con un gateway multicanal TTIG-915.\\
+				\item Validación: el cliente tendrá a dispoción dicho equipo en todo momento.\\
+			\end{itemize}
+		\end{enumerate}
+\end{enumerate}
 
 \end{consigna}
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
 
-\begin{consigna}{red}
+\begin{consigna}{black}
 El plan de comunicación del proyecto es el siguiente:
 \end{consigna}
 
@@ -915,12 +1100,11 @@ El plan de comunicación del proyecto es el siguiente:
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
+¿Qué comunicar? &Audiencia & Propósito&Frecuencia& Método de comunicac. & Responsable \\ \hline
+     Alcance del proyecto &Director&Definir los limites del proyecto&Al inciar el proyecto&Video-conferencia&Milton Sosa\\ \hline
+     Avances &Director&Cada dos semanas& Comunicar avances & Video-conferencia & Milton Sosa  \\ \hline
+     Consultas Técnicas& Director y Colaboradores&Acalarar dudas técnicas&Bajo demanda& Video-conferencia o mailo &Milton Sosa\\ \hline
+     Cierre del proyecto&Cliente y Jurado&Evualuar y finalizar el proyecto&Una vez al finalizar el proyecto&Presentación online o presencial&Milton Sosa\\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -928,23 +1112,17 @@ El plan de comunicación del proyecto es el siguiente:
 \section{15. Gestión de Compras}
 \label{sec:compras}
 
-\begin{consigna}{red}
-En caso de tener que comprar elementos o contratar servicios:
-a) Explique con qué criterios elegiría a un proveedor.
-b) Redacte el Statement of Work correspondiente.
+\begin{consigna}{black}
+Al realizar compras de insumos de cualquier tipo, se priorizarán a proveedores que aseguren un tiempo de entrega menor a 10 días.
+\begin{itemize}
+\item Proveedor: Digi-Key, Reichelt GmbH o Amazon.
+\item Criterio de elección: variedad y disponibilidad de componentes, ventas a nivel minorista, rápida entrega a Alemania y gestiones de aduana ya incluídas.
+\end{itemize}
 \end{consigna}
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
-
-\begin{consigna}{red}
-Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
-
-El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
-
-\end{consigna}
-
-\begin{table}[!htpb]
+\begin{table}[H]
 \centering
 \begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
 \hline
@@ -952,29 +1130,52 @@ El indicador de avance tiene que ser algo medible, mejor incluso si se puede med
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+ 1&Entregas semanales& Semanal&Milton Sosa& Director y docente del CESE&Mail\\ \hline
+ 2.1&Qué transductor se ha elegido y ensayado&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+ 2.2&Cuántos relays aptos se encontraron y ensayaron.&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+ 2.3&Qué técnica de rectificación se ha adoptado y que componentes se utilizará&Quincenal&Milton Sosa&Director& Video-conferencia, mail\\ \hline
+ 2.4&Qué alternativa se adoptó y cual es la autonomía estimada&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+ 2.5&Qué alternativa se ha adoptado&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+ 2.6&Qué chip se ha adoptado&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+ 2.7&Qué circuito se adoptará y que componentes se utilizarán&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+ 2.8&Que placa de desarrollo y módulo de comunicaciones se utilizará&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
 \end{tabularx}%
 %}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
+		\hline
+		\rowcolor[HTML]{C0C0C0} 
+		\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
+		\rowcolor[HTML]{C0C0C0} 
+		Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic.\\ \hline
+		2.9&Porcentaje de componentes soldados&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+		3.1&Cuántas funcionalidades se han implementado&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+		3.2&Grado de integración con la red LoRaWAN&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+		4&Cuántas pruebas se han realizado.&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+		5.1&Cuántos puntos se han desarrollado&Semanal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+		5.2&Cantidad de diapositivas realizadas&Semanal&Milton Sosa&Director& Video-conferencia \\ \hline
+	\end{tabularx}%
+	%}
 \end{table}
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+\begin{consigna}{black}
+%Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+%\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
+Milton Sosa es responsable de llevar a cabo las tareas especificadas en el WBS cumpliendo al mismo tiempo con los requerimientos. También será responsable de realizar una comparación entre los tiempos estimados y reales para la ejecución del proyecto.\\
 
-\begin{itemize}
-\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-  - Indicar esto y quién financiará los gastos correspondientes.
-\end{itemize}
+%\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
+En caso de ser necesario, se creará una carpeta adicional con datos empíricos recolectados durante la ejecución de las tareas tales como: técnicas utilizadas, mediciones, capturas de pantalla y otros comportamientos observados. Estos servirán de respaldo para constatar el cumplimiento de los requerimientos, identificar procedimientos útiles e inútiles, problemas encontrados y soluciones aplicadas.\\
+
+%\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
+Como actividad final del proyecto, se realizará un agradecimiento formal a los interesados e informará su finalización. También se incluirán agradecimientos en la presentacion fina y memoria técnica del proyecto.
+
 
 \end{consigna}
 
