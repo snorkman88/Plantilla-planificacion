@@ -7,7 +7,6 @@
 \usepackage{afterpage}
 \usepackage{lipsum}
 
-
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
 \titulo{Sistema de sensores autónomos para monitoreo de redes de distribución de baja tensión mediante LoRaWAN} 
 
@@ -88,7 +87,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.6      & Se corrigen errores ortográficos y de redacción. \newline
 	Se reemplaza el punto por coma como notación decimal en el presupuesto.\newline
 	Se corrige el formato de la matriz de asignación de responsabilidades para hcerla mas legible.\newline
-	Se corrigen valores de severidades, criterios para adopción de medidas de mitigación y modifica tabla de gestión de riesgos.& 08/08/2020 \\ \hline
+	Se corrigen valores de severidades, criterios para adopción de medidas de mitigación y modifica tabla de gestión de riesgos.& 14/08/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -185,8 +184,6 @@ Los BES privados a desarrollar en este proyecto serán 3:
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{black} 
-
 \begin{table}[H]
 %\caption{Identificación de los interesados}
 %\label{tab:interesados}
@@ -207,21 +204,15 @@ Usuario final &                   &              	&        	\\ \hline
 	\item Ing. Marcelo E. Romeo, de vasta experiencia profesional en el ámbito de la microelectrónica e investigación y desarrollo para diferentes entidades y universidades nacionales.
 	\item Dr. Ing. Eduardo O. Sosa, cuenta con más de 20 años de experiencia en el área de las TELCO, ex miembro colaborador de la RIU, profesor titular de la cátedra de Física en la Universidad Nacional de Misiones y lidera proyectos bilaterales entre Argentina y Alemania en el ámbito de WSN.
 \end{itemize}
-\end{consigna}
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
-
-\begin{consigna}{black}
 El propósito de este proyecto es desarrollar un sistema formado por un circuito electrónico autónomo y un conjunto de software dedicado a la recuperación y almacenamiento de datos generados y transmitidos por el circuito.\\
 
 El sistema debe ser capaz de permitir a las actuales redes de distribución de energía eléctrica reportar su estado actual de operación a un centro de monitoreo.
-\end{consigna}
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
-
-\begin{consigna}{black}
 Se pretende desarrollar un prototipo de HW capaz de ser autosuficiente en cuanto a la conversión, acumulación y gestión de energía eléctrica con el objeto de alimentar y permitir su operación en estado autónomo y permanente. Para ello se desarrollará un circuito de \textit{micro energy harvesting} basado en rectificadores de bajas pérdidas, acumuladores aptos para la aplicación final y un conversor DC/DC de alta eficiencia.\\
 
 Se desarrollará una etapa de medición de valor eficaz de corriente alterna, con el objeto de medir la intensidad de corriente que actualmente circula por el conductor conectado a la salida de baja tensión e inmediatamente después del fusible aéreo de protección.\\
@@ -231,11 +222,9 @@ Agregado a los módulos mencionados anteriormente, un microcontrolador se encarg
 Los BES se albergarán en una computadora de bajo costo que proporcionará suficientes recursos para su operación y ensayo en la etapa de desarollo.\\
 
 No es parte del alcance del presente proyecto llegar a una etapa de lanzamiento del producto a clientes finales, sino la de lograr un demostrador tecnológico. Sin embargo, si los tiempos lo permiten y se logra contar con una infraestructura adecuada, se desean realizar ensayos \textit{end-to-end} en laboratorio sobre el sistema, involucrando los prototipos de hardware que fueran desarrollados, y una integración mínima entre los BES y la red LoRaWAN ya existente.\\
-\end{consigna}
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
-\begin{consigna}{black}
 Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
 	\item El autor del trabajo no tendrá ningún problema para hacerse de los insumos necesarios para alcanzar los objetivos recurriendo a distribuidores de componentes en el mercado local.
@@ -244,11 +233,6 @@ Para el desarrollo del presente proyecto se supone que:
 	\item En caso de ser necesario realizar ensayos \textit{end-to-end}, el responsable deberá fabricar un banco de ensayos apropiado para simular los casos de uso y probar el sistema en su conjunto, como así disponer de instrumentos patrones para contrastar y verificar el correcto funcionamiento.
 	\item Los ensayos \textit{end-to-end} no demorarán la fecha de finalización del proyecto.
 \end{itemize}
-\end{consigna}
-
-
-
-
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
@@ -941,8 +925,6 @@ Riesgo 5: se deberá planear el armado de un laboratorio que sea portátil y pos
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
-
-\begin{consigna}{black}
 Para cada uno de los requerimientos del proyecto indique:
 %\begin{itemize} 
 %\item Req: Copiar acá el requerimiento.
@@ -1139,13 +1121,9 @@ Para cada uno de los requerimientos del proyecto indique:
 		\end{enumerate}
 \end{enumerate}
 
-\end{consigna}
-
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
-\begin{consigna}{black}
 El plan de comunicación del proyecto es el siguiente:
-\end{consigna}
 
 \begin{table}[htpb]
 \centering
@@ -1166,14 +1144,11 @@ El plan de comunicación del proyecto es el siguiente:
 
 \section{15. Gestión de Compras}
 \label{sec:compras}
-
-\begin{consigna}{black}
 Al realizar compras de insumos de cualquier tipo, se priorizarán a proveedores que aseguren un tiempo de entrega menor a 10 días.
 \begin{itemize}
 \item Proveedor: Digi-Key, Reichelt GmbH o Amazon.
 \item Criterio de elección: variedad y disponibilidad de componentes, ventas a nivel minorista, rápida entrega a Alemania y gestiones de aduana ya incluídas.
 \end{itemize}
-\end{consigna}
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
