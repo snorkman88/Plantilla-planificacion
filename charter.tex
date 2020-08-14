@@ -85,6 +85,10 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 	Se modifica el valor del presupuesto en base a la cotización del día del Banco Central de la República Argentina.\newline
 & 31/07/2020 \\ \hline
 1.5      & Se desarrollan los puntos 12 al 17                                                  & 08/08/2020 \\ \hline
+1.6      & Se corrigen errores ortográficos y de redacción. \newline
+	Se reemplaza el punto por coma como notación decimal en el presupuesto.\newline
+	Se corrige el formato de la matriz de asignación de responsabilidades para hcerla mas legible.\newline
+	Se corrigen valores de severidades, criterios para adopción de medidas de mitigación y modifica tabla de gestión de riesgos.& 08/08/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -311,6 +315,38 @@ Para el desarrollo del presente proyecto se supone que:
 
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
+Como operario del centro de monitoreo, quiero que en caso de que ocurra un corte en el suministro de energía, se pueda saber la localización geográfica del nodo que reporta el corte.
+\begin{itemize}
+	\item Ponderación: 7
+	\item Prioridad: 3
+\end{itemize}
+
+Como operario del centro de monitoreo, quiero poder recibir alertas en caso de que la tension en bornes del acumulador sea menor a 2,5 Volts.
+\begin{itemize}
+	\item Ponderación: 7
+	\item Prioridad: 3
+\end{itemize}
+
+Como operario del centro de monitoreo, quiero poder recibir una notificacion en caso de que dejen de recibirse reportes por mas de X minutos.
+\begin{itemize}
+	\item Ponderación: 3
+	\item Prioridad: 3
+\end{itemize}
+
+Como jefe de mantenimiento de los sensores, quiero acceder a un gráfico histórico de la intensidad con la que se recibieron las señales de cada nodo.
+\begin{itemize}
+	\item Ponderación: 1
+	\item Prioridad: 1
+\end{itemize}
+
+Como jefe de mantenimiento preventivo de redes, quiero que en la GUI se pueda ver un gráfico histórico de las mediciones realizadas.
+\begin{itemize}
+	\item Ponderación: 3
+	\item Prioridad: 1
+\end{itemize}
+
+Ponderaciones: 1 bajo esfuerzo, 3 esfuerzo moderado, 7 alto esfuerzo.
+Prioridad: 1 baja, 2 media, 3 alta.
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
@@ -447,36 +483,37 @@ Cantidad total de horas: (676 hs)
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering 
 	\includegraphics[width=\textwidth]{./Figuras/activity_on_node/version_compacta/aon.png}
 	\caption{Diagrama en \textit{Activity on Node}}
 	\label{fig:AoN}
 \end{figure}
 
-
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
 \begin{figure}[H]
 	\centering 
 	\includegraphics[width=\textwidth]{./Figuras/gantt/inicio-24.png}
-	\includegraphics[width=\textwidth]{./Figuras/gantt/25-29.png}
+	%\includegraphics[width=\textwidth]{./Figuras/gantt/25-29.png}
 	%\caption{Diagrama en \textit{Activity on Node}}
 	\label{fig:tablegantt1}
 \end{figure}
+
 \begin{figure}[H]
 	\centering 
+	%\includegraphics[width=\textwidth]{./Figuras/gantt/inicio-24.png}
+	\includegraphics[width=\textwidth]{./Figuras/gantt/25-29.png}
 	\includegraphics[width=\textwidth]{./Figuras/gantt/3-fin.png}
 	\caption{Tabla para confección del diagrama de \textit{gantt}}
-	\label{fig:tablegantt2}
+	%\caption{Diagrama en \textit{Activity on Node}}
+	\label{fig:tablegantt1}
 \end{figure}
+
 \afterpage{
 \begin{landscape}
 \begin{figure}[H]
 	\centering 
-	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/gantt1-24.png}
-	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/gantt25-29.png}
-	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/gantt3-fin.png}
 	\includegraphics[width=1.35\textwidth]{./Figuras/gantt/diagrama/v2/inicio.png}
 	%\includegraphics[width=\textwidth]{./Figuras/gantt/diagrama/v2/274-fin.png}
 	\caption{Diagrama de \textit{gantt}}
@@ -639,50 +676,50 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
 
- Transformador de intensidad tipo núcleo partido y clase 0.5&
+ Transformador de intensidad tipo núcleo partido y clase 0,5&
   \multicolumn{1}{c|}{1} &
-  \multicolumn{1}{c|}{92.00} &
-  \multicolumn{1}{c|}{92.00} \\ \hline
+  \multicolumn{1}{c|}{92,00} &
+  \multicolumn{1}{c|}{92,00} \\ \hline
 
  Circuito impreso &
  \multicolumn{1}{c|}{1} &
- \multicolumn{1}{c|}{40.00} &
- \multicolumn{1}{c|}{40.00} \\ \hline
+ \multicolumn{1}{c|}{40,00} &
+ \multicolumn{1}{c|}{40,00} \\ \hline
 
  Componentes electrónicos varios * &
  \multicolumn{1}{c|}{1} &
- \multicolumn{1}{c|}{100.00} &
- \multicolumn{1}{c|}{100.00} \\ \hline
+ \multicolumn{1}{c|}{100,00} &
+ \multicolumn{1}{c|}{100,00} \\ \hline
 
  Módulo de desarrollo basado en ESP32 y transceptor LoRa *&
  \multicolumn{1}{c|}{1} &
- \multicolumn{1}{c|}{40.00} &
- \multicolumn{1}{c|}{40.00} \\ \hline
+ \multicolumn{1}{c|}{40,00} &
+ \multicolumn{1}{c|}{40,00} \\ \hline
 
  Raspberry Pi 3 B+&
   \multicolumn{1}{c|}{1} &
-  \multicolumn{1}{c|}{45.00} &
-  \multicolumn{1}{c|}{45.00} \\ \hline
+  \multicolumn{1}{c|}{45,00} &
+  \multicolumn{1}{c|}{45,00} \\ \hline
   
  Acumulador&
  \multicolumn{1}{c|}{1} &
- \multicolumn{1}{c|}{10.00} &
- \multicolumn{1}{c|}{10.00} \\ \hline 
+ \multicolumn{1}{c|}{10,00} &
+ \multicolumn{1}{c|}{10,00} \\ \hline 
 
  Viáticos de movilidad&
  \multicolumn{1}{c|}{1} &
- \multicolumn{1}{c|}{600.00} &
- \multicolumn{1}{c|}{600.00} \\ \hline 
+ \multicolumn{1}{c|}{600,00} &
+ \multicolumn{1}{c|}{600,00} \\ \hline 
  
 
  Honorarios profesionales&
- \multicolumn{1}{c|}{676} &
- \multicolumn{1}{c|}{10} &
- \multicolumn{1}{c|}{6760.00} \\ \hline
+ \multicolumn{1}{c|}{676,00} &
+ \multicolumn{1}{c|}{10,00} &
+ \multicolumn{1}{c|}{6760,00} \\ \hline
 
 
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{7687.00} \\ \hline
+  \multicolumn{1}{c|}{7687,00} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -693,31 +730,31 @@ Descripción &
 
 \multicolumn{1}{|l|}{Multímetro digital True RMS}
 	&
-   1&
-   100.00&
-   100.00\\ \hline
+   \multicolumn{1}{c|}{1}&
+   \multicolumn{1}{c|}{100,00}&
+   \multicolumn{1}{c|}{100,00}\\ \hline
    
    
 \multicolumn{1}{|l|}{Generador de señales} &
-1&
-80.00&
-80.00\\ \hline
+\multicolumn{1}{c|}{1}&
+\multicolumn{1}{c|}{80,00}&
+\multicolumn{1}{c|}{80,00}\\ \hline
 
 
 \multicolumn{1}{|l|}{Servicios de energía eléctrica e internet} &
-1&
-70.00&
-70.00\\ \hline
+\multicolumn{1}{c|}{1}&
+\multicolumn{1}{c|}{70,00}&
+\multicolumn{1}{c|}{70,00}\\ \hline
    
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{250.00} \\ \hline
+  \multicolumn{1}{c|}{250,00} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-   7937.00\\ \hline
+   \multicolumn{1}{c|}{7937,00}\\ \hline
 \end{tabularx}%
 \end{table}
 \euro{7937} = 887.356 Pesos Argentinos*\\
-(*) Valores aproximados
+(*) Valores aproximados al día 7 de Agosto del 2020, según cotización del Banco Nación de 86 Pesos Argentinos para la compra de 1 Euro.
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
@@ -741,62 +778,88 @@ Descripción &
 \rowcolor[HTML]{C0C0C0} 
 \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
   \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
-  \authorname &
-  \supname &
-  Ing. Germán A. Xánder &
-  \clientename \\ \hline
+  \shortstack{Ing. Milton\\Sosa} &
+  \shortstack{Ing. Marcelo\\Romeo} &
+  \shortstack{Ing. Germán\\ Xánder} &
+  \shortstack{Ing. Marcelo\\Romeo} \\ \hline
    1.1& Diseño de la arquitectura global  & P & A & C & A \\ \hline
    1.2& Documentación del plan de proyecto & P & A/C & C & A \\ \hline
- 2.1.1& Análisis de transductores aptos para el hardware a desarrollar & P & C/A & C &  \\ \hline
+ 2.1.1& \shortstack{Análisis de transductores aptos para\\el hardware a desarrollar}& P & C/A & C &  \\ \hline
  2.1.2& Selección de componentes & P & C & C & I \\ \hline
- 2.1.3& Ensayo y evaluación del transductor de manera individual & P & C/A & C &  \\ \hline
- 2.1.4& Documentación de resultados del ensayo del transductor & P & A &  &  \\ \hline
- 2.2.1& Análisis de alternativas disponibles en el mercado & P &  &  &  \\ \hline
- 2.2.2& Selección de relays aptos en base a los requerimientos & P & C/A & C &  \\ \hline
- 2.2.3& Ensayo del circuito de selección de manera individual & P &  &  &  \\ \hline
+ 2.1.3& \shortstack{Ensayo y evaluación del\\transductor de manera individual}& P & C/A & C &  \\ \hline
+ 2.1.4& \shortstack{Documentación de resultados\\del ensayo del transductor}& P & A &  &  \\ \hline
+ 2.2.1& \shortstack{Análisis de alternativas\\disponibles en el mercado} & P &  &  &  \\ \hline
+ 2.2.2& \shortstack{Selección de relays aptos\\en base a los requerimientos}& P & C/A & C &  \\ \hline
+ 2.2.3& \shortstack{Ensayo del circuito de\\selección de manera individual} & P &  &  &  \\ \hline
  2.2.4& Documentación de ensayo & P & A &  &  \\ \hline
- 2.3.1& Análisis comparativo de alternativas para técnicas de rectificacion & P & C & C &  \\ \hline
- 2.3.2& Selección de componentes encargados de la etapa de rectificación & P & C/A & C &  \\ \hline
- 2.3.3& Ensayo de la etapa de rectificación de manera individual & P &  &  &  \\ \hline
+ 2.3.1& \shortstack{Análisis comparativo de alternativas\\para técnicas de rectificacion} & P & C & C &  \\ \hline
+ 2.3.2& \shortstack{Selección de componentes encargados\\de la etapa de rectificación} & P & C/A & C &  \\ \hline
+ 2.3.3& \shortstack{Ensayo de la etapa de rectificación\\de manera individual}& P &  &  &  \\ \hline
  2.3.4& Documentación de ensayos & P & A &  &  \\ \hline
- 2.4.1& Análisis y selección de alternativas viables acorde al requerimiento de autonomía de operación & P & C &  &  \\ \hline
- 2.4.2& Ensayo de carga y descarga del acumulador de manera individual & P &  &  &  \\ \hline
- 2.4.3& Evaluación de resultados y estimación de la autonomía de operación & P & C &  &  \\ \hline
+ 2.4.1& \shortstack{Análisis y selección de alternativas\\viables acorde al requerimiento de\\autonomía de operación} & P & C &  &  \\ \hline
+ 2.4.2& \shortstack{Ensayo de carga y descarga del\\acumulador de manera individual}& P &  &  &  \\ \hline
+ 2.4.3& \shortstack{Evaluación de resultados y\\estimación de la autonomía de operación}& P & C &  &  \\ \hline
  2.4.4& Documentación ensayos & P & A &  &  \\ \hline
- 2.5.1& Análisis de alternativas técnicas para elevación de tensión & P &  &  &  \\ \hline
- 2.5.2& Ensayo y evaluación de la etapa de elevación de tensión & P & C &  &  \\ \hline
- 2.6.1& Análisis y selección de un chip dedicado a realizar la medición RMS de corriente & P & C & C &  \\ \hline
- 2.6.2& Ensayo de la etapa de medición de valor RMS & P &  &  &  \\ \hline
+ 2.5.1& \shortstack{Análisis de alternativas técnicas\\para elevación de tensión}& P &  &  &  \\ \hline
+ 2.5.2& \shortstack{Ensayo y evaluación de la\\etapa de elevación de tensión}& P & C &  &  \\ \hline
+ 2.6.1& \shortstack{Análisis y selección de un chip dedicado\\a realizar la medición RMS de corriente} & P & C & C &  \\ \hline
+ 2.6.2& \shortstack{Ensayo de la etapa de\\medición de valor RMS}& P &  &  &  \\ \hline
  2.6.3& Documentación de ensayos & P & A &  &  \\ \hline
- 2.7.1& Análisis de alternativas técnicas para filtrado y amplificación & P & C & C &  \\ \hline
+ 2.7.1& \shortstack{Análisis de alternativas técnicas\\para filtrado y amplificación} & P & C & C &  \\ \hline
  2.7.2& Selección de componentes & P & C/A & C &  \\ \hline
- 2.7.3& Ensayo de la etapa de filtrado y amplificación & P &  &  &  \\ \hline
+ 2.7.3& \shortstack{Ensayo de la etapa de\\filtrado y amplificación}& P &  &  &  \\ \hline
  2.7.4& Documentación de ensayos & P & A &  &  \\ \hline
- 2.8.1& Análisis y selección de microcontroladores y módulos de comunicaciónes & P &  &  &  \\ \hline
- 2.8.2& Pruebas de laboratorio del microcontrolador y módulo de comunicaciónes & P &  &  &  \\ \hline
+ 2.8.1& \shortstack{Análisis y selección de microcontroladores\\y módulos de comunicaciónes} & P &  &  &  \\ \hline
+ 2.8.2& \shortstack{Pruebas del microcontrolador\\y módulo de comunicaciónes} & P &  &  &  \\ \hline
  2.9.1& Ruteo del circuito impreso & P & A &  &  \\ \hline
  2.9.2& Inspección & P & C & C &  \\ \hline
  2.9.3& Montaje y soldado de componentes & P &  &  &  \\ \hline
  2.9.4& Prueba y depuración & P &  &  &  \\ \hline
- 3.1.1& Definición de la ”lógica de negocio”que regirá la operación del hardware & P & C &  & A \\ \hline
+ 3.1.1& \shortstack{Definición de la ”lógica de negocio”\\que regirá la operación del hardware} & P & C &  & A \\ \hline
  3.1.2& Prototipado del firmware & P & C &  &  \\ \hline
  3.1.3& Depuración de errores & P &  &  &  \\ \hline
  3.1.4& Pruebas unitarias & P &  &  &  \\ \hline
- 3.2.1& Diseño de la arquitectura y lógica de operación de cada servicio & P & C & C & A \\ \hline
- 3.2.2& Instalación de los servicios & P &  & C &  \\ \hline
- 3.2.3& Creación de tablas en base de datos para el almacenamiento de valores históricos & P &  & C &  \\ \hline
- 3.2.4& Desarrollo del software encargado de recuperar los datos de la red LoRaWAN & P &  & C &  \\ \hline
- 3.2.5& Desarrollo de la interfaz gráfica en Grafana & P & C/A &  & A \\ \hline
- 3.2.6& Pruebas de integración & P &  &  &  \\ \hline
- 3.2.7& Depuración de errores & P &  &  &  \\ \hline
- 4.1& Definición de los casos de ensayo & P & C/A &  & A \\ \hline
- 4.2& Desarrollo del software & P & C & C &  \\ \hline
- 4.3& Ejecución de las pruebas & P &  &  &  \\ \hline
- 4.4& Depuración de errores & P & C &  &  \\ \hline
- 5.1& Elaboración de la memoria técnica & P & A & C &  \\ \hline
- 5.2& Elaboración de la presentación final & P & A & I & I \\ \hline
 \end{tabular}%
 }
+\end{table}
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			\rowcolor[HTML]{C0C0C0} 
+			\cellcolor[HTML]{C0C0C0} &
+			\cellcolor[HTML]{C0C0C0} &
+			\multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Listar todos los nombres y roles del proyecto} \\ \cline{3-6} 
+			\rowcolor[HTML]{C0C0C0} 
+			\cellcolor[HTML]{C0C0C0} &
+			\cellcolor[HTML]{C0C0C0} &
+			Responsable &
+			Orientador &
+			Colaborador &
+			Cliente \\ \cline{3-6} 
+			\rowcolor[HTML]{C0C0C0} 
+			\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
+			\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
+			\shortstack{Ing. Milton\\Sosa} &
+			\shortstack{Ing. Marcelo\\Romeo} &
+			\shortstack{Ing. Germán\\ Xánder} &
+			\shortstack{Ing. Marcelo\\Romeo} \\ \hline
+			3.2.1& \shortstack{Diseño de la arquitectura y lógica\\de operación de cada servicio} & P & C & C & A \\ \hline
+			3.2.2& Instalación de los servicios & P &  & C &  \\ \hline
+			3.2.3& \shortstack{Creación de tablas para el\\almacenamiento de valores históricos} & P &  & C &  \\ \hline
+			3.2.4& \shortstack{Desarrollo del software encargado de\\recuperar los datos de la red LoRaWAN} & P &  & C &  \\ \hline
+			3.2.5& \shortstack{Desarrollo de la interfaz\\gráfica en Grafana}& P & C/A &  & A \\ \hline
+			3.2.6& Pruebas de integración & P &  &  &  \\ \hline
+			3.2.7& Depuración de errores & P &  &  &  \\ \hline
+			4.1& Definición de los casos de ensayo & P & C/A &  & A \\ \hline
+			4.2& Desarrollo del software & P & C & C &  \\ \hline
+			4.3& Ejecución de las pruebas & P &  &  &  \\ \hline
+			4.4& Depuración de errores & P & C &  &  \\ \hline
+			5.1& Elaboración de la memoria técnica & P & A & C &  \\ \hline
+			5.2& Elaboración de la presentación final & P & A & I & I \\ \hline
+		\end{tabular}%
+	}
 \end{table}
 {\footnotesize
 Referencias:
@@ -811,17 +874,15 @@ Referencias:
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
-
-\begin{consigna}{black}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
+a) Identificación de los riesgos y estimación de sus consecuencias:
  
-Riesgo 1: Falta de tiempo para terminar con todas las tareas estipuladas en el desglose de trabajo en tareas.
+Riesgo 1: falta de tiempo para terminar con todas las tareas estipuladas en el desglose de trabajo en tareas.
 \begin{itemize}
-\item Severidad (6): se demoraría la entrega de toda la documentación y la presentación final.\\
+\item Severidad (8): se demoraría la entrega de toda la documentación y la presentación final.\\
 \item Probabilidad de ocurrencia (3): un desglose detallado de tareas permite programar una reasignación de prioridades mientras se mitigan los impactos.\\
 \end{itemize}   
 
-Riesgo 2: No poder conseguir los materiales.
+Riesgo 2: no poder conseguir los materiales.
 \begin{itemize}
 \item Severidad (5): De no conseguir circuitos integrados especificos, se deberá realizar una alternativa de tipo casera con componentes discretos que cumpla con las mismas especificaciones.
 \item Probabilidad de ocurrencia (2): los componentes asociados a la etapa de hardware no son dificiles de conseguir, sin embargo, un proceso lento de exportación de los mismos es dable.
@@ -830,22 +891,22 @@ Riesgo 2: No poder conseguir los materiales.
 
 Riesgo 3: Falla en el circuito impreso
 \begin{itemize}
-\item Severidad (5): demoraría el comienzo de las pruebas end-to-end.
+\item Severidad (5): demoraría el comienzo de las pruebas \textit{end-to-end}.
 \item Probabilidad de ocurrencia (3): se deberá ensayar previamente todo en un protoboard. Si funcionase sin problemas en el protoboard, la posibilidad de fallo se reduce.
 \end{itemize}
 
 
-Riesgo 4: Los servicios de backend privados especificos del proyecto se encuentran caídos al momento de realizar ensayos end-to-end.
+Riesgo 4: Los servicios de backend privados específicos del proyecto se encuentran caídos al momento de realizar ensayos \textit{end-to-end}.
 \begin{itemize}
-	\item Severidad (4): de no estar operativos los BES, no se podrá probar la GUI en grafana. Sin embargo, se podra verificar que los datos lleguen a la red LoRaWAN.
-	\item Probabilidad de ocurrencia (2): los servicios de BES son unicamente 3 y poseen mecanismos de monitoreo de estado antes de comenzar con los ensayos.
+	\item Severidad (4): de no estar operativos los BES, no se podrá probar la GUI en Grafana. Sin embargo, se podrá verificar que los datos lleguen a la red LoRaWAN.
+	\item Probabilidad de ocurrencia (2): los servicios de BES son únicamente 3 y poseen mecanismos de monitoreo de estado antes de comenzar con los ensayos.
 \end{itemize}
 
 
 Riesgo 5: Restricciones de movilidad debido al COVID-19.
 \begin{itemize}
-	\item Severidad (6): no poder trasladarse hacia el laboratorio representaria un gran impacto al momento de ensayar las etapas de manera individual. También impactaría sobre la presentación final que debera hacerse de manera remota y no presencial.
-	\item Probabilidad de ocurrencia (7): Los indices de casos positivos son muy dispares entre las diferentes regiones de Argentina, por lo que podrían resurgir otros brotes.
+	\item Severidad (6): no poder trasladarse hacia el laboratorio representaría un gran impacto al momento de ensayar las etapas de manera individual. También impactaría sobre la presentación final que deberá hacerse de manera remota y no presencial.
+	\item Probabilidad de ocurrencia (7): Los índices de casos positivos son muy dispares entre las diferentes regiones de Argentina, por lo que podrían resurgir otros brotes.
 \end{itemize}
 
 b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
@@ -856,28 +917,27 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
- Riesgo 1& 6 & 3 & 18  &    &    &      \\ \hline
- Riesgo 2& 5 & 2 & 10  &    &    &      \\ \hline
- Riesgo 3& 5 & 3 & 15  &    &    &      \\ \hline
- Riesgo 4& 4 & 2 & 8   &    &    &      \\ \hline
- Riesgo 5& 6 & 7 & 42  &  3  &  1  &      \\ \hline
+Falta de tiempo para terminar con todas las tareas estipuladas en el desglose de trabajo en tareas& 8 & 3 & 24 &    &    &      \\ \hline
+No poder conseguir los materiales& 5 & 2 & 10  &    &    &      \\ \hline
+Falla en el circuito& 5 & 3 & 15  &    &    &      \\ \hline
+Los servicios de backend privados específicos del proyecto se encuentran caídos al momento de realizar ensayos end-to-end& 4 & 2 & 8   &    &    &      \\ \hline
+Restricciones de movilidad debido al COVID-19& 6 & 7 & 42  &  3  &  7  &  21 \\ \hline
 \end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 20.
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 25.
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 5: se deberá planear el armado de un laboratorio que sea portatil y posea todas las herramientas necesarias para desarrollar las pruebas. Tambien se deberá modificar la forma y contenido de la presentación del trabajo final ante el cliente y jurado por otra que integre herramientas para video conferencia.
+Riesgo 5: se deberá planear el armado de un laboratorio que sea portátil y posea todas las herramientas necesarias para desarrollar las pruebas. También se deberá modificar la forma y contenido de la presentación del trabajo final ante el cliente y jurado por otra que integre herramientas para video conferencia.
 \begin{itemize}
-	\item Severidad (3): al disponer del laboratorio portatil deja de ser necesario trasladarse. También impactaría sobre la presentación final que debera hacerse de manera remota y no presencial.
-	\item Ocurrencia (1): Se espera que los brotes de Los indices de casos positivos son muy dispares entre las diferentes regiones de Argentina, por lo que podrían resurgir otros brotes.
+	\item Severidad (3): al disponer del laboratorio portátil deja de ser necesario trasladarse.
+	\item Ocurrencia (7): se estima que para finales del mes de Septiembre del año 2020 los índices de casos positivos habrán disminudo y las fronteras vuelto a abrir. Sin embargo, es probable que con aún existan restricciones de movilidad.
 \end{itemize}
 
-\end{consigna}
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
@@ -891,7 +951,7 @@ Para cada uno de los requerimientos del proyecto indique:
 	\begin{enumerate}[label*=\arabic*.]
 			\item El dispositivo deberá ser de tipo \textit{plug and play}.
 				\begin{itemize}
-					\item Verificación: una vez finalizado el hardware, la unica acción necesaria será instalar el transformador de corriente sobre el conductor.\\
+					\item Verificación: una vez finalizado el hardware, la única acción necesaria será instalar el transformador de corriente sobre el conductor.\\
 					\item Validación: el cliente en persona hará una prueba de comisionamiento y puesta en funcionamiento.\\
 				\end{itemize}
 				
@@ -920,26 +980,26 @@ Para cada uno de los requerimientos del proyecto indique:
 					\end{itemize}
 				\item Integrar un módulo de comunicaciones LoRa.
 					\begin{itemize}
-						\item Verificación: en caso de no encontrarse un modulo del microcontrolador que ya lo integre, se usará un módulo a parte.\\
+						\item Verificación: en caso de no encontrarse un módulo del microcontrolador que ya lo integre, se usará un módulo a parte.\\
 						\item Validación: se harán pruebas de laboratorio contra la red LoRaWAN.\\
 					\end{itemize}
 			\end{enumerate}
 			
 			\item Deberá tener al menos 12 horas de autonomía de funcionamiento.
 				\begin{itemize}
-					\item Verificación: se realizará una prueba de laboratorio para exponer su máxima autonomia.\\
+					\item Verificación: se realizará una prueba de laboratorio para exponer su máxima autonomía.\\
 					\item Validación: se planificará un ensayo junto con el cliente de manera presencial.\\
 				\end{itemize}
 			
 			\item Bajo consumo en modo ocioso: el consumo del hardware en total, no deberá superar los 5 mA cuando no está midiendo ni transmitiendo.
 				\begin{itemize}
-					\item Verificación: se verificarán que todas las etapas del hardware esten en modo ahorro de energía o desactivadas.\\
+					\item Verificación: se verificarán que todas las etapas del hardware estén en modo ahorro de energía o desactivadas.\\
 					\item Validación: se realizará una medición de corriente a la salida del acumulador.\\
 				\end{itemize}
 				
 			\item El circuito elevador de tensión DC-DC deberá:
 			\begin{enumerate}[label*=\arabic*.]
-				\item Funcionar con tensiones menores a 2V en la entrada.
+				\item Funcionar con tensiones menores a 2 V en la entrada.
 					\begin{itemize}
 						\item Verificación: se buscarán módulos cuyas hojas de datos cumplan con este requisito.\\
 						\item Validación: mediante una fuente regulable se verificará que el circuito elevador comience a funcionar con menos de 2.\\
@@ -962,7 +1022,7 @@ Para cada uno de los requerimientos del proyecto indique:
 			\begin{enumerate}[label*=\arabic*.]
 				\item Ser de tipo núcleo partido.
 					\begin{itemize}
-						\item Verificación: al momento de seleccionarlo se analizaran las variantes con o sin bisagras.\\
+						\item Verificación: al momento de seleccionarlo se analizarán las variantes con o sin bisagras.\\
 						\item Validación: el cliente recibirá la hoja de datos del transformador de corriente seleccionado.\\
 					\end{itemize}
 				\item Admitir 100 Amperes de corriente en el circuito primario y un máximo 5 Amperes en el circuito secundario.
@@ -974,12 +1034,12 @@ Para cada uno de los requerimientos del proyecto indique:
 			
 			\item El relay encargado de cambiar el modo de operación debe:
 			\begin{enumerate}[label*=\arabic*.]
-				\item Ser de tipo doble invesor sin retención.
+				\item Ser de tipo doble inversor sin retención.
 					\begin{itemize}
 						\item Verificación: se utilizarán las hojas de datos de los fabricantes.\\
 						\item Validación: se realizará un ensayo de laboratorio con dos leds y un pulsador.\\
 					\end{itemize}
-				\item Su bobina debe poder energizarse con 5V o menos.
+				\item Su bobina debe poder energizarse con 5 V o menos.
 					\begin{itemize}
 						\item Verificación: se consultarán las hojas de datos del fabricante.\\
 						\item Validación: se realizará un ensayo de laboratorio con una fuente regulable incrementando su valor de manera progresiva.\\
@@ -1000,7 +1060,7 @@ Para cada uno de los requerimientos del proyecto indique:
 			\item Debe funcionar de manera independiente a la tensión de fase del sistema de distribución 110/220 Voltios.
 				\begin{itemize}
 					\item Verificación: al seleccionar el transductor y el chip medidor de corriente se verificará que ambos cumplan con este requerimiento.\\
-					\item Validación: se haran pruebas conectando cargas a una tensíon de 110 Volts provista por un transformador de potencia.\\
+					\item Validación: se harán pruebas conectando cargas a una tensión de 110 Volts provista por un transformador de potencia.\\
 				\end{itemize}			
 
 	\end{enumerate}
@@ -1013,20 +1073,20 @@ Para cada uno de los requerimientos del proyecto indique:
 				\end{itemize}
 			\item Deberá tener un porcentaje de cobertura de tests unitarios del 60 por ciento como mínimo.
 				\begin{itemize}
-					\item Verificación: se analizaran cuantas funciona se desarrollaron y cuantas pruebas unitarias.\\
-					\item Validación: El cliente podrá acceder a un reporte de cobertura como así también al código.\\
+					\item Verificación: se contrastarán el numero de líneas de código se desarrollado \textit{versus} el número de líneas cubiertas por pruebas unitarias.\\
+					\item Validación: el cliente podrá acceder a un reporte de cobertura como así también al código.\\
 				\end{itemize}
 			\item Antes configurarse en modo ocioso, debe desenergizar la etapa de medición de corriente y el módulo de comunicaciones con el objeto de ahorrar energía.
 				\begin{itemize}
-					\item Verificación: se consultara en hojas de datos de cada etapa los consumos en cada modo.\\
-					\item Validación: se medirá el consumo total del circuito al entrar en ahorro de energia.\\
+					\item Verificación: se consultará en hojas de datos de cada etapa los consumos en cada modo.\\
+					\item Validación: se medirá el consumo total del circuito al entrar en ahorro de energía.\\
 				\end{itemize}
 		\end{enumerate}
 	\item Grupo de requerimientos asociados con los BES
 		\begin{enumerate}[label*=\arabic*.]
 			\item Todos los servicios deben poder correr en una Raspberry Pi 3.
 			\begin{itemize}
-				\item Verificación: Antes de comenzar con la instalación se verificará que los servicios pueden correr sobre la arquitectura del dispositivo.\\
+				\item Verificación: antes de comenzar con la instalación se verificará que los servicios pueden correr sobre la arquitectura del dispositivo.\\
 				\item Validación: junto al cliente se realizarán pruebas de comunicación entre los BES.\\
 			\end{itemize}
 			
@@ -1044,14 +1104,14 @@ Para cada uno de los requerimientos del proyecto indique:
 
 			\item Almacenar los datos en una tabla de MySQL.
 			\begin{itemize}
-				\item Verificación: se implementarán tablas para el almacenamiento de los datos historicos y vistas para obtener los ultimos datos.\\
+				\item Verificación: se implementarán tablas para el almacenamiento de los datos históricos y vistas para obtener los últimos datos.\\
 				\item Validación: el cliente enviará datos desde un hardware de prueba a la red LoRaWAN y verificará que los mismos se almacenen en la base de datos accediendo a las tablas.\\
 			\end{itemize}
 			
 			\item GUI basada en Grafana.
 			\begin{itemize}
-				\item Verificación: Se verificará una vez elaborado el dashboard, que se muestren los ultimos datos recolectados de cada nodo en la base de datos.\\
-				\item Validación: el cliente enviará datos desde un hardware de prueba la red LoRaWAN y simultaneamente tendrá acceso a la GUI.\\
+				\item Verificación: se verificará una vez elaborado el dashboard, que se muestren los últimos datos recolectados de cada nodo en la base de datos.\\
+				\item Validación: el cliente enviará datos desde un hardware de prueba la red LoRaWAN y simultáneamente tendrá acceso a la GUI.\\
 			\end{itemize}
 		\end{enumerate}
 		
@@ -1061,19 +1121,19 @@ Para cada uno de los requerimientos del proyecto indique:
 			10 Amperes y permitir realizar interrupciones de corriente de manera programada
 			mediante una computadora adicional tipo Raspberry Pi o de manera manual.
 			\begin{itemize}
-				\item Verificación: el banco de prueba constara de una estufa halogena de al menos 2200 Watts y será accionada mediante un relay o contactor.\\
-				\item Validación: el cliente podrá probar el banco de ensayos y validar las mediciones con una pinza amperométrica el mismo.\\
+				\item Verificación: el banco de prueba constará de una estufa halógena de al menos 2200 Watts y será accionada mediante un relay o contactor.\\
+				\item Validación: el cliente podrá probar el banco de ensayos y validar las mediciones con una pinza amperométrica él mismo.\\
 			\end{itemize}
 			
 			\item Los BES deben estar operativos al momento de realizar los ensayos.
 			\begin{itemize}
-				\item Verificación: se haran monitoreo de estado y alertas de manera automatica.\\
+				\item Verificación: se harán monitoreo de estado y alertas de manera automática.\\
 				\item Validación: el cliente podrá acceder a todos los servicios de backend de manera remota en todo momento.\\
 			\end{itemize}
 			
 			\item Contar con un gateway de acceso a una red LoRaWAN como por ejemplo \textit{The Things Network}.
 			\begin{itemize}
-				\item Verificación: se contara con un gateway multicanal TTIG-915.\\
+				\item Verificación: se contará con un gateway multicanal TTIG-915.\\
 				\item Validación: el cliente tendrá a dispoción dicho equipo en todo momento.\\
 			\end{itemize}
 		\end{enumerate}
@@ -1083,15 +1143,10 @@ Para cada uno de los requerimientos del proyecto indique:
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
-
 \begin{consigna}{black}
 El plan de comunicación del proyecto es el siguiente:
 \end{consigna}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htpb]
 \centering
 \resizebox{\textwidth}{!}{%
@@ -1100,11 +1155,11 @@ El plan de comunicación del proyecto es el siguiente:
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-¿Qué comunicar? &Audiencia & Propósito&Frecuencia& Método de comunicac. & Responsable \\ \hline
-     Alcance del proyecto &Director&Definir los limites del proyecto&Al inciar el proyecto&Video-conferencia&Milton Sosa\\ \hline
-     Avances &Director&Cada dos semanas& Comunicar avances & Video-conferencia & Milton Sosa  \\ \hline
-     Consultas Técnicas& Director y Colaboradores&Acalarar dudas técnicas&Bajo demanda& Video-conferencia o mailo &Milton Sosa\\ \hline
-     Cierre del proyecto&Cliente y Jurado&Evualuar y finalizar el proyecto&Una vez al finalizar el proyecto&Presentación online o presencial&Milton Sosa\\ \hline
+¿Qué comunicar? &Audiencia & Propósito&Frecuencia& \shortstack{Método de\\comunicac}. & Responsable \\ \hline
+     Alcances&Director&\shortstack{Definir los límites\\del proyecto}&Al inciar el proyecto&Video-conferencia&Milton Sosa\\ \hline
+     Avances &Director&Comunicar avances&Cada dos semanas& Video-conferencia & Milton Sosa \\ \hline
+     \shortstack{Consultas\\técnicas}& \shortstack{Director y\\colaboradores}&\shortstack{Aclarar dudas\\técnicas}&Bajo demanda& \shortstack{Video-conferencia\\o mail} &Milton Sosa\\ \hline
+     \shortstack{Cierre del\\proyecto}&\shortstack{Cliente y\\jurado}&\shortstack{Evualuar y \\ finalizar el proyecto}&\shortstack{Una vez al finalizar\\el proyecto}&\shortstack{Presentación online \\o presencial}&Milton Sosa\\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -1134,7 +1189,7 @@ Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimien
  2.1&Qué transductor se ha elegido y ensayado&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
  2.2&Cuántos relays aptos se encontraron y ensayaron.&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
  2.3&Qué técnica de rectificación se ha adoptado y que componentes se utilizará&Quincenal&Milton Sosa&Director& Video-conferencia, mail\\ \hline
- 2.4&Qué alternativa se adoptó y cual es la autonomía estimada&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
+ 2.4&Qué alternativa se adoptó y cuál es la autonomía estimada&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
  2.5&Qué alternativa se ha adoptado&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
  2.6&Qué chip se ha adoptado&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
  2.7&Qué circuito se adoptará y que componentes se utilizarán&Quincenal&Milton Sosa&Director&Video-conferencia, mail\\ \hline
@@ -1164,20 +1219,37 @@ Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimien
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
+\begin{itemize}
+	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
+	\begin{itemize}
+		\item Persona a cargo: Milton Eduardo Sosa
+		\item Procedimiento:
+		\begin{itemize}
+			\item Se evaluará si se han cumplido los plazos de entrega y ejecución por cada tarea planteados.
+			\item Se evaluará el nivel de cumplimiento de los requerimientos y objetivos planteados.
+			\item Se evaluará que riesgos hubo y la efectividad del plan de mitigación.
+		\end{itemize}
+	\end{itemize}
 
-\begin{consigna}{black}
-%Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
-%\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
-Milton Sosa es responsable de llevar a cabo las tareas especificadas en el WBS cumpliendo al mismo tiempo con los requerimientos. También será responsable de realizar una comparación entre los tiempos estimados y reales para la ejecución del proyecto.\\
+	\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
+	\begin{itemize}
+		\item Persona a cargo: Milton Eduardo Sosa
+		\item Procedimiento:
+		\begin{itemize}
+			\item Se evaluará si las técnicas de diseño de hardware y software adoptados fueron las adecuadas.
+			\item Se evaluará el impacto de las herramientas utilizadas durante toda la ejecución del proyecto.
+			\item Se evaluarán los problemas encontrados y las soluciones adoptadas.
+			\item Se registrará en la memoria técnica.
+		\end{itemize}
+	\end{itemize}
 
-%\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
-En caso de ser necesario, se creará una carpeta adicional con datos empíricos recolectados durante la ejecución de las tareas tales como: técnicas utilizadas, mediciones, capturas de pantalla y otros comportamientos observados. Estos servirán de respaldo para constatar el cumplimiento de los requerimientos, identificar procedimientos útiles e inútiles, problemas encontrados y soluciones aplicadas.\\
-
-%\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-Como actividad final del proyecto, se realizará un agradecimiento formal a los interesados e informará su finalización. También se incluirán agradecimientos en la presentacion fina y memoria técnica del proyecto.
-
-
-\end{consigna}
-
-
+	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
+	\begin{itemize}
+		\item Persona a cargo: Milton Eduardo Sosa
+		\item Procedimiento:
+		\begin{itemize}
+			\item Finalizado el proyecto, mediante la defensa pública y memoria técnica, se realizará un agradecimiento formal al director, colaboradores, jurados, docentes y autoridades de la Carrera de Especialización en Sistemas Embebidos.
+		\end{itemize}
+	\end{itemize}	
+\end{itemize}
 \end{document}
